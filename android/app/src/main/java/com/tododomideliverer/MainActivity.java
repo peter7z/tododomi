@@ -1,4 +1,4 @@
-package com.reactnativebase;
+package com.tododomideliverer;
 
 import com.reactnativenavigation.controllers.SplashActivity;
 
