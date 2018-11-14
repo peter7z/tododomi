@@ -16,7 +16,7 @@ export const login = deliverer =>
   async (dispatch) => {
     try {
       const response = await userApi.login({ deliverer });
-      await sessionService.saveUser(response.user);
+      await sessionService.saveUser(response.deliverer);
       dispatch(loginSuccess());
     } catch (err) {
       throw new SubmissionError({

@@ -3,7 +3,8 @@ export default {
     title: 'Sign in',
     email: 'Email',
     password: 'Password',
-    button: 'Sign in'
+    button: 'Sign in',
+    app: 'Delivery'
   },
 
   MAIN_SCREEN: {

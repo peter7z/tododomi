@@ -1,20 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, View } from 'react-native';
+import { ImageBackground, View, Image, Text } from 'react-native';
 import { connect } from 'react-redux';
 
-import LoginForm from 'components/User/LoginForm';
-import { login } from 'actions/userActions';
 import translate from 'utils/i18n';
+import LoginForm from 'components/User/LoginForm';
+import bg from 'assets/images/bg.png';
+import logo from 'assets/images/logo.png';
+import { login } from 'actions/userActions';
 import styles from './styles';
 
 const LoginScreen = ({ login }) => (
-  <View style={styles.container}>
-    <Text style={styles.welcome}>
-      {translate('SIGN_IN.title')}
-    </Text>
-    <LoginForm onSubmit={user => login(user.toJS())} />
-  </View>
+  <ImageBackground
+    resizeMode={'cover'}
+    style={styles.bgImage}
+    source={bg}
+  >
+    <View style={styles.container}>
+      <Image style={styles.logo} source={logo} />
+      <Text style={styles.app}>{translate('SIGN_IN.app')}</Text>
+      <LoginForm onSubmit={login} />
+    </View>
+  </ImageBackground>
 );
 
 const { func } = PropTypes;
@@ -23,12 +30,12 @@ LoginScreen.propTypes = {
   login: func.isRequired
 };
 
-LoginScreen.navigationOptions = {
-  title: 'Log In'
+LoginScreen.navigatorStyle = {
+  navBarHidden: true
 };
 
 const mapDispatch = dispatch => ({
-  login: user => dispatch(login(user))
+  login: user => dispatch(login(user.toJS()))
 });
 
 export default connect(null, mapDispatch)(LoginScreen);

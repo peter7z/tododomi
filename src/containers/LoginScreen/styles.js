@@ -1,17 +1,27 @@
 import { StyleSheet } from 'react-native';
 
+import { secondaryColor } from 'constants/styleConstants';
+
 const styles = StyleSheet.create({
+  bgImage: { flex: 1 },
+
+  logo: {
+    resizeMode: 'contain',
+    width: 155,
+  },
+
+  app: {
+    color: secondaryColor,
+    fontSize: 21,
+    marginTop: 9,
+  },
+
   container: {
+    alignItems: 'center',
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF'
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10
-  },
+    paddingHorizontal: 40
+  }
 });
 
 export default styles;
