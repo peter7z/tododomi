@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form/immutable';
 import { View, Text, Button } from 'react-native';
 
 import * as constraints from 'utils/constraints';
-import Input from 'components/common/Input';
+import Input from 'components/Common/Input';
 import translate from 'utils/i18n';
 import styles from './styles';
 

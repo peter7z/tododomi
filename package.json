@@ -17,7 +17,9 @@
 		"react-native": "0.55.3",
 		"react-native-config": "^0.11.5",
 		"react-native-i18n": "^2.0.15",
+    "react-native-material-textfield": "n4kz/react-native-material-textfield#pull/128/head",
 		"react-native-navigation": "1.1.440",
+		"react-native-svg": "^6.5.2",
 		"react-redux": "^5.0.5",
 		"redux": "^3.7.1",
 		"redux-form": "^6.8.0",
@@ -43,5 +45,10 @@
 	},
 	"jest": {
 		"preset": "react-native"
+	},
+	"rnpm": {
+		"assets": [
+			"./src/assets/fonts/"
+		]
 	}
 }

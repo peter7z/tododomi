@@ -31,13 +31,14 @@ const handleErrors = response =>
         if (response.status === 401) {
           sessionService.deleteSession();
         }
-      });
+      }).catch(() => {});
 
     response.json()
       .then((json) => {
         const error = json || { message: response.statusText };
+        error.status = response.status;
         reject(error);
-      }).catch(() => reject({ message: 'Response not JSON' }));
+      }).catch(() => reject({ status: response.status, message: 'Response not JSON' }));
   });
 
 const getResponseBody = (response) => {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 
-import LoginForm from 'components/user/LoginForm';
+import LoginForm from 'components/User/LoginForm';
 import { login } from 'actions/userActions';
 import translate from 'utils/i18n';
 import styles from './styles';

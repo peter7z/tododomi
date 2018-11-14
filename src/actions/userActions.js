@@ -12,10 +12,10 @@ export const logoutSuccess = () => ({
   type: types.LOGOUT_SUCCESS
 });
 
-export const login = user =>
+export const login = deliverer =>
   async (dispatch) => {
     try {
-      const response = await userApi.login(user);
+      const response = await userApi.login({ deliverer });
       await sessionService.saveUser(response.user);
       dispatch(loginSuccess());
     } catch (err) {

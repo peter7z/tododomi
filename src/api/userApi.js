@@ -1,12 +1,12 @@
 import api from './apiService';
 
 class Session {
-  static login(user) {
-    return api.post('/users/sign_in', user);
+  static login(deliverer) {
+    return api.post('/deliverers/sign_in', deliverer);
   }
 
   static logout() {
-    return api.delete('/users/sign_out');
+    return api.delete('/deliverers/sign_out');
   }
 }
 
