@@ -9,5 +9,11 @@ export default {
 
   MAIN_SCREEN: {
     logout: 'Sign out'
+  },
+
+  PROFILE: {
+    configurations: 'My configurations',
+    logoutRow: 'Logout',
+    changeRow: 'Change password'
   }
 };
