@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form/immutable';
-import { View, Text, Button } from 'react-native';
+import { View, Text } from 'react-native';
 
-import * as constraints from 'utils/constraints';
-import Input from 'components/Common/Input';
 import translate from 'utils/i18n';
-import styles from './styles';
+import { validations, login } from 'utils/constraints';
+import Input from 'components/Common/Input';
+import Button from 'components/Common/Button';
+import { styles, buttonMargin } from './styles';
 
 const LoginForm = ({ handleSubmit, error }) => (
-  <View style={styles.login} onSubmit={handleSubmit}>
-    {error && <Text>{error}</Text>}
+  <View style={styles.container} onSubmit={handleSubmit}>
+    {error && <Text style={styles.error}>{error}</Text>}
     <Field
       name="email"
       label={translate('SIGN_IN.email')}
@@ -22,7 +23,11 @@ const LoginForm = ({ handleSubmit, error }) => (
       component={Input}
       password
     />
-    <Button title={translate('SIGN_IN.button')} onPress={handleSubmit} />
+    <Button
+      title={translate('SIGN_IN.button')}
+      onPress={handleSubmit}
+      marginTop={buttonMargin}
+    />
   </View>
 );
 
@@ -35,5 +40,5 @@ LoginForm.propTypes = {
 
 export default reduxForm({
   form: 'login',
-  validate: constraints.validations(constraints.login)
+  validate: validations(login)
 })(LoginForm);

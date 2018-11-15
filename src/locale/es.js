@@ -3,7 +3,8 @@ export default {
     title: 'Iniciar sesión',
     email: 'Email',
     password: 'Contraseña',
-    button: 'Iniciar sesión'
+    button: 'Ingresar',
+    app: 'Delivery'
   },
 
   MAIN_SCREEN: {
