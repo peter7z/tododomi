@@ -15,5 +15,21 @@ export default {
     configurations: 'My configurations',
     logoutRow: 'Logout',
     changeRow: 'Change password'
+  },
+
+  CHANGE_PASSWORD: {
+    oldPassword: 'Current password',
+    newPassword: 'New password',
+    confirmPassword: 'Confirm new password',
+    button: 'Change password',
+    title: 'Change password'
+  },
+
+  COMMON_VALIDATIONS: {
+    passwordBlankError: 'You must enter a password',
+    passwordConfirmError: 'The confirmation doesn\'t match',
+    passwordMinimumError: 'The password must have at least 8 characters',
+    emailBlankError: 'You must enter an email',
+    emailInvalidError: 'You must enter a valid email'
   }
 };

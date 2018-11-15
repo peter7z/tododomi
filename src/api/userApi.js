@@ -8,6 +8,10 @@ class Session {
   static logout() {
     return api.delete('/deliverers/sign_out');
   }
+
+  static changePassword(passwordData) {
+    return api.put('/deliverers/password', passwordData);
+  }
 }
 
 export default Session;
