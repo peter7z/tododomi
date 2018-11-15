@@ -2,6 +2,7 @@ import { Navigation } from 'react-native-navigation';
 import { Provider } from 'react-redux';
 import Immutable from 'immutable';
 import { sessionService } from 'redux-react-native-session';
+import SplashScreen from 'react-native-splash-screen';
 
 import configureStore from 'store/configureStore';
 import registerScreens from '../screens';
@@ -54,6 +55,8 @@ class App {
         }
       });
     }
+
+    SplashScreen.hide();
   }
 }
 
