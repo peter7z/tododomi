@@ -40,5 +40,5 @@ LoginForm.propTypes = {
 
 export default reduxForm({
   form: 'login',
-  validate: validations(login)
+  validate: validations(login, { fullMessages: false })
 })(LoginForm);

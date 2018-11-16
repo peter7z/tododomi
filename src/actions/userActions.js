@@ -36,3 +36,14 @@ export const logout = () =>
       throw err;
     }
   };
+
+export const changePassword = passwordData =>
+  async () => {
+    try {
+      await userApi.changePassword(passwordData);
+    } catch ({ error, errors }) {
+      throw new SubmissionError({
+        _error: error || (errors && errors.fullMessages[0])
+      });
+    }
+  };
