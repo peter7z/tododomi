@@ -9,5 +9,11 @@ export default {
 
   MAIN_SCREEN: {
     logout: 'Cerrar sesión'
+  },
+
+  PROFILE: {
+    configurations: 'Mis configuraciones',
+    logoutRow: 'Cerrar sesión',
+    changeRow: 'Cambiar contraseña'
   }
 };
