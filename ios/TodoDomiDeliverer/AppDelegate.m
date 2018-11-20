@@ -8,8 +8,10 @@
 #import "AppDelegate.h"
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
-#import "RNSplashScreen.h" 
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
+#import "RNSplashScreen.h"
 #import "RCCManager.h"
 
 @implementation AppDelegate
@@ -28,6 +30,8 @@
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   self.window.backgroundColor = [UIColor whiteColor];
   [[RCCManager sharedInstance] initBridgeWithBundleURL:jsCodeLocation launchOptions:launchOptions];
+  
+  [Fabric with:@[[Crashlytics class]]];
   [RNSplashScreen show];
   return YES;
 }
