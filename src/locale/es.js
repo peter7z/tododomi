@@ -31,5 +31,18 @@ export default {
     passwordMinimumError: 'La contraseña debe tener al menos 8 caracteres',
     emailBlankError: 'Debes ingresar tu email',
     emailInvalidError: 'Debes ingresar un email válido'
+  },
+
+  DASHBOARD: {
+    title: 'Órdenes',
+    today: 'Hoy',
+    tomorrow: 'Mañana',
+  },
+
+  ORDERS: {
+    active: 'Activa',
+    today: 'Hoy',
+    tomorrow: 'Mañana',
+    assign: 'No tienes órdenes asignadas'
   }
 };
