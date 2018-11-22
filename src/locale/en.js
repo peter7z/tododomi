@@ -31,5 +31,16 @@ export default {
     passwordMinimumError: 'The password must have at least 8 characters',
     emailBlankError: 'You must enter an email',
     emailInvalidError: 'You must enter a valid email'
+  },
+
+  DASHBOARD: {
+    title: 'Orders'
+  },
+
+  ORDERS: {
+    active: 'Active',
+    today: 'Today',
+    tomorrow: 'Tomorrow',
+    assign: 'No orders assigned'
   }
 };

@@ -24,6 +24,7 @@ export const greyDialogBorder = '#edeff0';
 export const secondaryButtonTextColor = '#6f92de';
 export const dateColor = '#6f92de';
 export const primaryActiveColorWithOpacity = 'rgba(118, 153, 229, 0.1);';
+export const primaryActiveColorWithHalfOpacity = 'rgba(118, 153, 229, 0.5)';
 export const greyLogoColor = 'rgba(128, 140, 151, 0.13)';
 export const dialogBackgroundColor = 'rgba(4, 4, 15, 0.4)';
 

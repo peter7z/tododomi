@@ -5,7 +5,7 @@ import { sessionService } from 'redux-react-native-session';
 import SplashScreen from 'react-native-splash-screen';
 
 import configureStore from 'store/configureStore';
-import registerScreens, { MAIN_SCREEN, LOGIN_SCREEN } from '../screens';
+import registerScreens, { DASHBOARD_SCREEN, LOGIN_SCREEN } from '../screens';
 
 const store = configureStore(Immutable.Map());
 registerScreens(store, Provider);
@@ -40,7 +40,7 @@ class App {
   startAuthenticatedApp() {
     Navigation.startSingleScreenApp({
       screen: {
-        screen: MAIN_SCREEN
+        screen: DASHBOARD_SCREEN
       }
     });
   }
