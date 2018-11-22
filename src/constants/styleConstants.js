@@ -18,6 +18,7 @@ export const groceryGreyColor = '#a1aab2';
 export const transparentColor = 'transparent';
 export const paleGreyColor = '#f6f7f9';
 export const greyBorderColor = '#e2e7eb';
+export const greyListBorderColor = '#ecf0f3';
 export const greyContentColor = '#8d98a2';
 export const greyCartColor = '#808c97';
 export const greyDialogBorder = '#edeff0';

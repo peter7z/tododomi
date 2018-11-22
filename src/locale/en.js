@@ -42,5 +42,11 @@ export default {
     today: 'Today',
     tomorrow: 'Tomorrow',
     assign: 'No orders assigned'
+  },
+
+  ORDERS_GROUP: {
+    store: 'Store',
+    details: 'Details',
+    stops: 'Stops'
   }
 };

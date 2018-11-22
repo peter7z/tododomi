@@ -7,7 +7,7 @@ import Chevron, { ChevronDirections } from 'components/Icons/Chevron';
 import OrderGroup from './OrdersGroup';
 import styles from './styles';
 
-const OrdersGroups = ({ day, groups, isCollapsed, onCollapse, onEnterOrder }) => (
+const OrdersGroups = ({ day, groups, isCollapsed, onCollapse, onEnterGroup }) => (
   <View>
     <View style={styles.header}>
       <Text style={styles.day}>{day}</Text>
@@ -16,13 +16,16 @@ const OrdersGroups = ({ day, groups, isCollapsed, onCollapse, onEnterOrder }) =>
         icon={<Chevron direction={isCollapsed ? ChevronDirections.UP : ChevronDirections.DOWN} />}
       />
     </View>
-    {!isCollapsed && groups.map(group => (
-      <OrderGroup
-        key={group.deliveryTime}
-        group={group}
-        onEnterOrder={onEnterOrder}
-      />
-    ))}
+    {!isCollapsed && groups.map((group) => {
+      const { grocery: { name }, deliveryTime } = group;
+      return (
+        <OrderGroup
+          key={`${name}-${deliveryTime}`}
+          group={group}
+          onEnterGroup={onEnterGroup}
+        />
+      );
+    })}
   </View>
 );
 
@@ -31,7 +34,7 @@ OrdersGroups.propTypes = {
   groups: array.isRequired,
   isCollapsed: bool.isRequired,
   onCollapse: func.isRequired,
-  onEnterOrder: func.isRequired,
+  onEnterGroup: func.isRequired,
 };
 
 export default OrdersGroups;

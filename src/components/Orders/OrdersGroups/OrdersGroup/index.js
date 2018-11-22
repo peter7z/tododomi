@@ -9,7 +9,11 @@ import { StopIcon } from 'components/Icons';
 import { greyColor } from 'constants/styleConstants';
 import styles from './styles';
 
-const OrdersGroup = ({ group: { deliveryTime, grocery, ordersCount, completedOrdersCount, active }, onEnterOrder }) => (
+const OrdersGroup = ({
+  group,
+  group: { deliveryTime, grocery, ordersCount, completedOrdersCount, active },
+  onEnterGroup
+}) => (
   <View style={styles.container}>
     <Image style={styles.logo} source={{ uri: grocery.logo.smallSize.url }} />
     <View style={styles.info}>
@@ -25,13 +29,13 @@ const OrdersGroup = ({ group: { deliveryTime, grocery, ordersCount, completedOrd
     </View>
     {active
       ? (
-        <TouchableOpacity onPress={onEnterOrder} style={styles.active}>
+        <TouchableOpacity onPress={() => onEnterGroup(group)} style={styles.active}>
           <Text style={styles.activeText}>{translate('ORDERS.active')}</Text>
         </TouchableOpacity>
       )
       : (
         <TouchableIcon
-          onPress={onEnterOrder}
+          onPress={() => onEnterGroup(group)}
           icon={<Chevron color={greyColor} direction={ChevronDirections.RIGHT} />}
         />
       )
@@ -41,7 +45,7 @@ const OrdersGroup = ({ group: { deliveryTime, grocery, ordersCount, completedOrd
 
 OrdersGroup.propTypes = {
   group: object.isRequired,
-  onEnterOrder: func.isRequired,
+  onEnterGroup: func.isRequired,
 };
 
 export default OrdersGroup;
