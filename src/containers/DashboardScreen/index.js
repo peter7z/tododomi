@@ -10,14 +10,14 @@ import OrdersEmptyState from 'components/Orders/OrdersEmptyState';
 import ProfileAvatar from 'components/Common/Avatar';
 import Header from 'components/Common/Header';
 import { getOrders, setOrders } from 'actions/orderActions';
-import { PROFILE_SCREEN } from '../../screens';
+import { PROFILE_SCREEN, ORDERS_GROUP_SCREEN } from '../../screens';
 import { styles, headerHeight, scrollheight } from './styles';
 
 class DashboardScreen extends React.Component {
   constructor() {
     super();
 
-    this.onEnterOrder = this.onEnterOrder.bind(this);
+    this.onEnterGroup = this.onEnterGroup.bind(this);
     this.showProfile = this.showProfile.bind(this);
     this.onCollapse = this.onCollapse.bind(this);
   }
@@ -33,7 +33,11 @@ class DashboardScreen extends React.Component {
     setOrders(modifiedOrdersGroups);
   }
 
-  onEnterOrder() {
+  onEnterGroup(group) {
+    this.props.navigator.push({
+      screen: ORDERS_GROUP_SCREEN,
+      passProps: { group }
+    });
   }
 
   showProfile() {
@@ -70,7 +74,7 @@ class DashboardScreen extends React.Component {
                   groups={groups}
                   isCollapsed={isCollapsed}
                   onCollapse={this.onCollapse}
-                  onEnterOrder={this.onEnterOrder}
+                  onEnterGroup={this.onEnterGroup}
                 />
               ))
               : <OrdersEmptyState />

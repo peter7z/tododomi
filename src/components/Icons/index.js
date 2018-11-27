@@ -4,3 +4,6 @@ export { default as UserIcon } from './UserIcon';
 export { default as EditIcon } from './EditIcon';
 export { default as StopIcon } from './StopIcon';
 export { default as CartIcon } from './CartIcon';
+export { default as CheckIcon } from './CheckIcon';
+export { default as CircleCrossIcon } from './CircleCrossIcon';
+export { default as LocationIcon } from './LocationIcon';
