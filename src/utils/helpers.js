@@ -18,7 +18,12 @@ export const onIPhoneX = () => {
 
 export const capitalize = text => text.charAt(0).toUpperCase() + text.slice(1);
 
-export const ordersGroupsToArray = ordersGroups => Object.entries(ordersGroups).map(([key, value]) => ({ day: translate(`ORDERS.${key}`), groups: value, isCollapsed: false }));
+export const ordersGroupsToArray = ordersGroups => Object.entries(ordersGroups).map(([key, value]) => ({
+  id: key,
+  day: translate(`ORDERS.${key}`),
+  groups: value,
+  isCollapsed: false,
+}));
 
 export const openMapAndDriveTo = (latitude, longitude) => {
   const mapUrl = Platform.OS === 'ios' ? IOS_ROUTE_MAP : ANDROID_ROUTE_MAP;

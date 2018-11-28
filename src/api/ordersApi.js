@@ -9,6 +9,14 @@ class Order {
   static getOrdersGroup(orderIds) {
     return api.get(applyQueryParams('/deliverers/orders/range', { orderIds }));
   }
+
+  static startOrdersGroup(orderIds) {
+    return api.put(applyQueryParams('/deliverers/orders/start_delivery', { orderIds }));
+  }
+
+  static setOrderStatus(id, delivered) {
+    return api.put(`/deliverers/orders/${id}`, { order: { delivered } });
+  }
 }
 
 export default Order;
