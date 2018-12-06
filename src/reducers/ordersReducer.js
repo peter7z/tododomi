@@ -5,8 +5,10 @@ import * as types from 'actions/actionTypes';
 export const initialState = Immutable.Map({
   ordersLoading: false,
   ordersGroupLoading: false,
+  startGroupLoading: false,
+  setOrderLoading: false,
   ordersGroups: Immutable.List(),
-  ordersGroup: Immutable.List(),
+  ordersGroup: Immutable.Map(),
 });
 
 export const ordersReducer = (state = initialState, action) => {
@@ -42,6 +44,37 @@ export const ordersReducer = (state = initialState, action) => {
 
     case types.GET_ORDERS_GROUP_FAIL: {
       return state.set('ordersGroupLoading', false);
+    }
+
+    case types.START_ORDERS_GROUP: {
+      return state.set('startGroupLoading', true);
+    }
+
+    case types.START_ORDERS_GROUP_SUCCESS: {
+      const newState = state.setIn(['ordersGroup', 'readyToDeliver'], true);
+      return newState.set('startGroupLoading', false);
+    }
+
+    case types.START_ORDERS_GROUP_FAIL: {
+      return state.set('startGroupLoading', false);
+    }
+
+    case types.SET_ORDER_STATUS: {
+      return state.set('setOrderLoading', true);
+    }
+
+    case types.SET_ORDER_STATUS_SUCCESS: {
+      const { id, delivered } = action;
+      let orders = state.getIn(['ordersGroup', 'orders']);
+      orders = orders.update(
+        orders.findIndex(item => item.get('id') === id), item => item.set('delivered', delivered)
+      );
+      const newState = state.setIn(['ordersGroup', 'orders'], orders);
+      return newState.set('setOrderLoading', false);
+    }
+
+    case types.SET_ORDER_STATUS_FAIL: {
+      return state.set('setOrderLoading', false);
     }
 
     default: {

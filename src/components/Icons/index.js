@@ -7,3 +7,4 @@ export { default as CartIcon } from './CartIcon';
 export { default as CheckIcon } from './CheckIcon';
 export { default as CircleCrossIcon } from './CircleCrossIcon';
 export { default as LocationIcon } from './LocationIcon';
+export { default as CircleIcon } from './CircleIcon';

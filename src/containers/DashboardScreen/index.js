@@ -10,6 +10,7 @@ import OrdersEmptyState from 'components/Orders/OrdersEmptyState';
 import ProfileAvatar from 'components/Common/Avatar';
 import Header from 'components/Common/Header';
 import { getOrders, setOrders } from 'actions/orderActions';
+import { TODAY_ID } from 'constants/appConstants';
 import { PROFILE_SCREEN, ORDERS_GROUP_SCREEN } from '../../screens';
 import { styles, headerHeight, scrollheight } from './styles';
 
@@ -33,10 +34,10 @@ class DashboardScreen extends React.Component {
     setOrders(modifiedOrdersGroups);
   }
 
-  onEnterGroup(group) {
+  onEnterGroup(id, group) {
     this.props.navigator.push({
       screen: ORDERS_GROUP_SCREEN,
-      passProps: { group }
+      passProps: { group, disabled: id !== TODAY_ID }
     });
   }
 
@@ -67,14 +68,14 @@ class DashboardScreen extends React.Component {
           {loading && <ActivityIndicator style={styles.activity} size="small" />}
           {!loading && (
             Boolean(ordersGroups.length)
-              ? ordersGroups.map(({ day, groups, isCollapsed }) => (
+              ? ordersGroups.map(({ id, day, groups, isCollapsed }) => (
                 <OrdersGroups
-                  key={day}
+                  key={id}
                   day={day}
                   groups={groups}
                   isCollapsed={isCollapsed}
                   onCollapse={this.onCollapse}
-                  onEnterGroup={this.onEnterGroup}
+                  onEnterGroup={group => this.onEnterGroup(id, group)}
                 />
               ))
               : <OrdersEmptyState />
