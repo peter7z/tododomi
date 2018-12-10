@@ -29,3 +29,5 @@ export const openMapAndDriveTo = (latitude, longitude) => {
   const mapUrl = Platform.OS === 'ios' ? IOS_ROUTE_MAP : ANDROID_ROUTE_MAP;
   Linking.openURL(`${mapUrl}${latitude},${longitude}`);
 };
+
+export const callTo = phone => Linking.openURL(`tel:${phone}`);

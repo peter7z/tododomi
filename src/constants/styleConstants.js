@@ -1,4 +1,4 @@
-import { Dimensions } from 'react-native';
+import { Dimensions, Platform, StatusBar } from 'react-native';
 
 // Colors
 export const primaryActiveColor = '#5b82d7';
@@ -23,7 +23,6 @@ export const greyContentColor = '#8d98a2';
 export const greyCartColor = '#808c97';
 export const greyDialogBorder = '#edeff0';
 export const secondaryButtonTextColor = '#6f92de';
-export const dateColor = '#6f92de';
 export const primaryActiveColorWithOpacity = 'rgba(118, 153, 229, 0.1);';
 export const primaryActiveColorWithHalfOpacity = 'rgba(118, 153, 229, 0.5)';
 export const greyLogoColor = 'rgba(128, 140, 151, 0.13)';
@@ -38,7 +37,9 @@ export const fontMedium = 'Roboto-Medium';
 export const iOSstatusBarHeight = 25;
 export const iOSstatusBarHeightiPhoneX = 40;
 export const iPhoneXHeight = 812;
-export const { width, height } = Dimensions.get('window');
+export const { width } = Dimensions.get('window');
+const { height: wh } = Dimensions.get('window');
+export const height = Platform.OS === 'ios' ? wh : (wh - StatusBar.currentHeight);
 export const containerWidth = width * 0.89;
 export const appSideSpace = (width - containerWidth) / 2;
 

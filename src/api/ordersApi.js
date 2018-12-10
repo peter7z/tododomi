@@ -17,6 +17,10 @@ class Order {
   static setOrderStatus(id, delivered) {
     return api.put(`/deliverers/orders/${id}`, { order: { delivered } });
   }
+
+  static getOrder(id) {
+    return api.get(`/deliverers/orders/${id}`);
+  }
 }
 
 export default Order;

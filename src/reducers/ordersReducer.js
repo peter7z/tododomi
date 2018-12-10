@@ -9,11 +9,13 @@ export const initialState = Immutable.Map({
   setOrderLoading: false,
   ordersGroups: Immutable.List(),
   ordersGroup: Immutable.Map(),
+  currentOrder: Immutable.Map()
 });
 
 export const ordersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.GET_ORDERS: {
+    case types.GET_ORDERS:
+    case types.GET_ORDER: {
       return state.set('ordersLoading', true);
     }
 
@@ -23,7 +25,14 @@ export const ordersReducer = (state = initialState, action) => {
       return newState.set('ordersGroups', Immutable.fromJS(ordersGroups));
     }
 
-    case types.GET_ORDERS_FAIL: {
+    case types.GET_ORDER_SUCCESS: {
+      const { order } = action;
+      const newState = state.set('ordersLoading', false);
+      return newState.set('currentOrder', Immutable.fromJS(order));
+    }
+
+    case types.GET_ORDERS_FAIL:
+    case types.GET_ORDER_FAIL: {
       return state.set('ordersLoading', false);
     }
 
@@ -51,7 +60,17 @@ export const ordersReducer = (state = initialState, action) => {
     }
 
     case types.START_ORDERS_GROUP_SUCCESS: {
-      const newState = state.setIn(['ordersGroup', 'readyToDeliver'], true);
+      const { id, name, deliveryTime } = action;
+
+      const ordersGroups = state.get('ordersGroups').toJS();
+      ordersGroups
+        .find(oGroup => oGroup.id === id)
+        .groups
+        .find(group => group.deliveryTime === deliveryTime && group.grocery.name === name)
+        .active = true;
+
+      let newState = state.set('ordersGroups', Immutable.fromJS(ordersGroups));
+      newState = newState.setIn(['ordersGroup', 'readyToDeliver'], true);
       return newState.set('startGroupLoading', false);
     }
 
@@ -64,12 +83,22 @@ export const ordersReducer = (state = initialState, action) => {
     }
 
     case types.SET_ORDER_STATUS_SUCCESS: {
-      const { id, delivered } = action;
+      const { id, name, deliveryTime, orderId, delivered } = action;
+
       let orders = state.getIn(['ordersGroup', 'orders']);
       orders = orders.update(
-        orders.findIndex(item => item.get('id') === id), item => item.set('delivered', delivered)
+        orders.findIndex(item => item.get('id') === orderId), item => item.set('delivered', delivered)
       );
-      const newState = state.setIn(['ordersGroup', 'orders'], orders);
+
+      const ordersGroups = state.get('ordersGroups').toJS();
+      ordersGroups
+        .find(oGroup => oGroup.id === id)
+        .groups
+        .find(group => group.deliveryTime === deliveryTime && group.grocery.name === name)
+        .active = true;
+
+      let newState = state.set('ordersGroups', Immutable.fromJS(ordersGroups));
+      newState = newState.setIn(['ordersGroup', 'orders'], orders);
       return newState.set('setOrderLoading', false);
     }
 
