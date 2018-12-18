@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { number, object, func } from 'prop-types';
 
+import { redActiveColor } from 'constants/styleConstants';
 import Button from 'components/Common/Button';
 import translate from 'utils/i18n';
 import styles, { buttonWidth } from './styles';
@@ -17,6 +18,7 @@ const OrdersDetailFooter = ({
       title={translate('ORDER_ITEMS_SCREEN.noDelivered')}
       width={buttonWidth}
       containerStyle={styles.firstButton}
+      underlayColor={redActiveColor}
     />
     <Button
       onPress={() => setOrderStatus(id, true)}

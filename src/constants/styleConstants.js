@@ -6,6 +6,7 @@ export const primaryColor = '#7699e5';
 export const secondaryColor = '#304154';
 export const lightSecondaryColor = '#516173';
 export const redColor = '#E57676';
+export const redActiveColor = '#de5454';
 export const greenColor = '#4EB993';
 export const greyColor = '#9ca6af';
 export const mediumGreyColor = '#e0e4e6';

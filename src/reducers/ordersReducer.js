@@ -60,7 +60,7 @@ export const ordersReducer = (state = initialState, action) => {
     }
 
     case types.START_ORDERS_GROUP_SUCCESS: {
-      const { id, name, deliveryTime } = action;
+      const { id, group: { grocery: { name }, deliveryTime } } = action;
 
       const ordersGroups = state.get('ordersGroups').toJS();
       ordersGroups
@@ -83,22 +83,35 @@ export const ordersReducer = (state = initialState, action) => {
     }
 
     case types.SET_ORDER_STATUS_SUCCESS: {
-      const { id, name, deliveryTime, orderId, delivered } = action;
+      const {
+        id,
+        group: { grocery: { name }, deliveryTime, ordersCount },
+        orderId,
+        delivered
+      } = action;
+      let isDelivered;
 
       let orders = state.getIn(['ordersGroup', 'orders']);
       orders = orders.update(
-        orders.findIndex(item => item.get('id') === orderId), item => item.set('delivered', delivered)
+        orders.findIndex(item => item.get('id') === orderId),
+        (item) => {
+          isDelivered = item.get('delivered');
+          return item.set('delivered', delivered);
+        }
       );
+      let newState = state.setIn(['ordersGroup', 'orders'], orders);
 
-      const ordersGroups = state.get('ordersGroups').toJS();
-      ordersGroups
-        .find(oGroup => oGroup.id === id)
-        .groups
-        .find(group => group.deliveryTime === deliveryTime && group.grocery.name === name)
-        .active = true;
+      if (isDelivered === null) {
+        const ordersGroups = state.get('ordersGroups').toJS();
+        const group = ordersGroups
+          .find(oGroup => oGroup.id === id)
+          .groups
+          .find(group => group.deliveryTime === deliveryTime && group.grocery.name === name);
+        group.completedOrdersCount += 1;
+        group.active = ordersCount !== group.completedOrdersCount;
+        newState = newState.set('ordersGroups', Immutable.fromJS(ordersGroups));
+      }
 
-      let newState = state.set('ordersGroups', Immutable.fromJS(ordersGroups));
-      newState = newState.setIn(['ordersGroup', 'orders'], orders);
       return newState.set('setOrderLoading', false);
     }
 

@@ -14,6 +14,7 @@ const Button = ({
   marginTop,
   marginHorizontal,
   containerStyle,
+  underlayColor,
   disabled = false
 }) => {
   const styles = stylesProps(width, marginBottom, marginTop, marginHorizontal);
@@ -28,7 +29,7 @@ const Button = ({
     <TouchableHighlight
       onPress={disabled ? null : onPress}
       activeOpacity={1}
-      underlayColor={transparent ? lightGreyColor : primaryActiveColor}
+      underlayColor={underlayColor || (transparent ? lightGreyColor : primaryActiveColor)}
       style={[buttonContainer, transparent && transparentStyle, containerStyle]}
     >
       <Text style={[buttonText, transparent && transparentText]}>
@@ -47,7 +48,8 @@ Button.propTypes = {
   width: string,
   marginBottom: number,
   marginTop: number,
-  marginHorizontal: number
+  marginHorizontal: number,
+  underlayColor: string,
 };
 
 export default Button;

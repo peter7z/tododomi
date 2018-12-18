@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
   infoSubContainer: { flexDirection: 'row' },
   avatarContainer: { position: 'relative' },
   separator: { color: groceryGreyColor },
+  drive: { marginLeft: 'auto' },
 
   container: {
     alignItems: 'center',

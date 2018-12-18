@@ -55,11 +55,10 @@ export const startUserOrdersGroup = () => ({
   type: types.START_ORDERS_GROUP
 });
 
-export const startOrdersGroupSuccess = (id, name, deliveryTime) => ({
+export const startOrdersGroupSuccess = (id, group) => ({
   type: types.START_ORDERS_GROUP_SUCCESS,
   id,
-  name,
-  deliveryTime
+  group,
 });
 
 export const startOrdersGroupFail = errors => ({
@@ -71,11 +70,10 @@ export const setUserOrderStatus = () => ({
   type: types.SET_ORDER_STATUS
 });
 
-export const setOrderStatusSuccess = (id, name, deliveryTime, orderId, delivered) => ({
+export const setOrderStatusSuccess = (id, group, orderId, delivered) => ({
   type: types.SET_ORDER_STATUS_SUCCESS,
   id,
-  name,
-  deliveryTime,
+  group,
   orderId,
   delivered,
 });
@@ -118,23 +116,23 @@ export const getOrdersGroup = orderIds =>
     }
   };
 
-export const startOrdersGroup = (id, name, deliveryTime, orderIds) =>
+export const startOrdersGroup = (id, group, orderIds) =>
   async (dispatch) => {
     dispatch(startUserOrdersGroup());
     try {
       await ordersApi.startOrdersGroup(orderIds);
-      dispatch(startOrdersGroupSuccess(id, name, deliveryTime));
+      dispatch(startOrdersGroupSuccess(id, group));
     } catch (errors) {
       dispatch(startOrdersGroupFail(errors));
     }
   };
 
-export const setOrderStatus = (id, name, deliveryTime, orderId, delivered) =>
+export const setOrderStatus = (id, group, orderId, delivered) =>
   async (dispatch) => {
     dispatch(setUserOrderStatus());
     try {
       await ordersApi.setOrderStatus(orderId, delivered);
-      dispatch(setOrderStatusSuccess(id, name, deliveryTime, orderId, delivered));
+      dispatch(setOrderStatusSuccess(id, group, orderId, delivered));
     } catch (errors) {
       dispatch(setOrderStatusFail(errors));
     }

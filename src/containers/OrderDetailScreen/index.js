@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ActivityIndicator, ScrollView, View } from 'react-native';
 import { connect } from 'react-redux';
-import { bool, object, func } from 'prop-types';
+import { bool, object, func, string } from 'prop-types';
 
 import ProductList from 'components/Product/ProductList';
 import { getOrder, setOrderStatus } from 'actions/orderActions';
@@ -19,7 +19,7 @@ class OrderDetailScreen extends Component {
   constructor() {
     super();
 
-    this.isChanging = false;
+    this.state = { changingId: 0 };
 
     this.onChangeOrderStatus = this.onChangeOrderStatus.bind(this);
     this.onBack = this.onBack.bind(this);
@@ -33,16 +33,15 @@ class OrderDetailScreen extends Component {
     this.props.navigator.pop();
   }
 
-  onChangeOrderStatus(id, delivered) {
-    if (!this.isChanging) {
-      this.isChanging = true;
+  onChangeOrderStatus(orderId, delivered) {
+    if (!this.state.changingId) {
       this.setState(
-        { changingId: id },
-        () => this.props.setOrderStatus(id, delivered)
-          .then(() => {
-            this.isChanging = false;
-            this.onBack();
-          }));
+        { changingId: orderId },
+        async () => {
+          const { id, group, setOrderStatus } = this.props;
+          await setOrderStatus(id, group, orderId, delivered);
+          this.onBack();
+        });
     }
   }
 
@@ -57,6 +56,7 @@ class OrderDetailScreen extends Component {
       loading,
       disabled
     } = this.props;
+    const height = disabled ? scrollHeight + footerHeight : scrollHeight;
 
     return (
       <View>
@@ -66,12 +66,7 @@ class OrderDetailScreen extends Component {
           group={group}
           order={order}
         />
-        <ScrollView style={[styles.scroll, {
-          height: disabled
-            ? scrollHeight + footerHeight
-            : scrollHeight
-        }]}
-        >
+        <ScrollView style={[styles.scroll, { height }]}>
           {loading ?
             <ActivityIndicator style={styles.activity} size="small" />
             : <View style={styles.scrollContent}>
@@ -104,6 +99,7 @@ OrderDetailScreen.navigatorStyle = {
 
 OrderDetailScreen.propTypes = {
   navigator: object.isRequired,
+  id: string.isRequired,
   group: object.isRequired,
   order: object.isRequired,
   currentOrder: object.isRequired,
@@ -121,7 +117,8 @@ const mapState = state => ({
 
 const mapDispatch = dispatch => ({
   getOrder: id => dispatch(getOrder(id)),
-  setOrderStatus: (id, delivered) => dispatch(setOrderStatus(id, delivered)),
+  setOrderStatus: (id, group, orderId, delivered) =>
+    dispatch(setOrderStatus(id, group, orderId, delivered)),
 });
 
 export default connect(mapState, mapDispatch)(OrderDetailScreen);

@@ -15,8 +15,7 @@ class OrdersGroupScreen extends React.Component {
   constructor() {
     super();
 
-    this.state = { changingId: -1 };
-    this.isChanging = false;
+    this.state = { changingId: 0 };
 
     this.onEnterOrder = this.onEnterOrder.bind(this);
     this.onChangeOrderStatus = this.onChangeOrderStatus.bind(this);
@@ -34,32 +33,26 @@ class OrdersGroupScreen extends React.Component {
   }
 
   onGroupStart() {
-    const {
-      id,
-      startGroup,
-      group: { orderIds, grocery: { name }, deliveryTime }
-    } = this.props;
-    startGroup(id, name, deliveryTime, orderIds);
+    const { id, startGroup, group } = this.props;
+    startGroup(id, group);
   }
 
   onEnterOrder(group, order) {
-    const { navigator, disabled } = this.props;
+    const { id, navigator, disabled } = this.props;
     navigator.push({
       screen: ORDER_DETAIL_SCREEN,
-      passProps: { group, order, disabled }
+      passProps: { id, group, order, disabled }
     });
   }
 
   onChangeOrderStatus(orderId, delivered) {
-    if (!this.isChanging) {
-      this.isChanging = true;
+    if (!this.state.changingId) {
       this.setState(
         { changingId: orderId },
-        () => {
-          const { id, group: { grocery: { name }, deliveryTime }, setOrderStatus } = this.props;
-          setOrderStatus(id, name, deliveryTime, orderId, delivered).then(() => {
-            this.isChanging = false;
-          });
+        async () => {
+          const { id, group, setOrderStatus } = this.props;
+          await setOrderStatus(id, group, orderId, delivered);
+          this.setState({ changingId: 0 });
         });
     }
   }
@@ -141,8 +134,9 @@ const mapState = state => ({
 
 const mapDispatch = dispatch => ({
   getOrdersGroup: orderIds => dispatch(getOrdersGroup(orderIds)),
-  startGroup: (id, name, deliveryTime, orderIds) => dispatch(startOrdersGroup(id, name, deliveryTime, orderIds)),
-  setOrderStatus: (id, name, deliveryTime, orderId, delivered) => dispatch(setOrderStatus(id, name, deliveryTime, orderId, delivered)),
+  startGroup: (id, group, orderIds) => dispatch(startOrdersGroup(id, group, orderIds)),
+  setOrderStatus: (id, group, orderId, delivered) =>
+    dispatch(setOrderStatus(id, group, orderId, delivered)),
 });
 
 export default connect(mapState, mapDispatch)(OrdersGroupScreen);

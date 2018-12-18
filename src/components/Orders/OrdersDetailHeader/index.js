@@ -46,7 +46,7 @@ const OrdersDetailHeader = ({
         <Text style={styles.subtitle}>{address}</Text>
       </View>
     </View>
-    <View style={{ marginLeft: 'auto' }}>
+    <View style={styles.drive}>
       <TouchableIcon onPress={() => openMapAndDriveTo(latitude, longitude)}>
         <LocationIcon width={locationIconSize} height={locationIconSize} />
       </TouchableIcon>
