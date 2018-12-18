@@ -9,7 +9,9 @@ import styles, { cartSize } from './styles';
 const OrderGroup = () => (
   <View style={styles.container}>
     <CartIcon width={cartSize} height={cartSize} color={primaryActiveColorWithHalfOpacity} />
-    <Text style={styles.moment}>{translate('ORDERS.assign')}</Text>
+    <Text style={styles.title}>{translate('ORDERS.emptyOrdersTitle')}</Text>
+    <Text style={styles.description}>{translate('ORDERS.emptyOrdersDescription')}</Text>
+    <Text style={styles.thanks}>{translate('ORDERS.emptyOrdersThanks')}</Text>
   </View>
 );
 

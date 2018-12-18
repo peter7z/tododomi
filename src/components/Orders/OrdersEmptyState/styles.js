@@ -1,6 +1,11 @@
 import { StyleSheet } from 'react-native';
 
-import { secondaryColor, greenColor, greyCartColor } from 'constants/styleConstants';
+import {
+  secondaryColor,
+  greenColor,
+  greyCartColor,
+  fontRegular
+} from 'constants/styleConstants';
 
 export const cartSize = 80;
 
@@ -11,10 +16,25 @@ const styles = StyleSheet.create({
     paddingTop: '30%'
   },
 
-  moment: {
+  title: {
     color: secondaryColor,
+    fontFamily: fontRegular,
     fontSize: 21,
-    marginTop: 42,
+    paddingTop: 10
+  },
+
+  description: {
+    color: greenColor,
+    fontFamily: fontRegular,
+    fontSize: 15,
+    paddingTop: 8
+  },
+
+  thanks: {
+    color: greyCartColor,
+    fontFamily: fontRegular,
+    fontSize: 15,
+    paddingTop: 15
   },
 
   choose: {

@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
   title: {
     color: secondaryColor,
     fontSize: 21,
-    marginBottom: 15,
     marginLeft: 15
   },
 });

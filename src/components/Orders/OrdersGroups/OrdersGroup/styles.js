@@ -7,7 +7,8 @@ import {
   groceryGreyColor,
   greenColor,
   whiteColor,
-  fontMedium
+  fontMedium,
+  greyListBorderColor
 } from 'constants/styleConstants';
 
 const styles = StyleSheet.create({
@@ -15,9 +16,11 @@ const styles = StyleSheet.create({
 
   container: {
     alignItems: 'center',
+    borderBottomColor: greyListBorderColor,
+    borderBottomWidth: 1,
     flexDirection: 'row',
-    height: 67,
-    paddingHorizontal: 15,
+    height: 77,
+    paddingHorizontal: 15
   },
 
   logo: {
