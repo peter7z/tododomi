@@ -1,15 +1,15 @@
+import { array, bool, func, object } from 'prop-types';
 import React from 'react';
-import { object, func, bool, array } from 'prop-types';
-import { View, ScrollView, ActivityIndicator } from 'react-native';
+import { ActivityIndicator, ScrollView, View } from 'react-native';
 import { connect } from 'react-redux';
 
-import translate from 'utils/i18n';
-import { secondaryColor } from 'constants/styleConstants';
-import OrdersGroups from 'components/Orders/OrdersGroups';
-import OrdersEmptyState from 'components/Orders/OrdersEmptyState';
+import { getOrders, setOrders } from 'actions/orderActions';
 import ProfileAvatar from 'components/Common/Avatar';
 import Header from 'components/Common/Header';
-import { getOrders, setOrders } from 'actions/orderActions';
+import OrdersEmptyState from 'components/Orders/OrdersEmptyState';
+import OrdersGroups from 'components/Orders/OrdersGroups';
+import { secondaryColor } from 'constants/styleConstants';
+import translate from 'utils/i18n';
 import { TODAY_ID } from 'constants/appConstants';
 import { PROFILE_SCREEN, ORDERS_GROUP_SCREEN } from '../../screens';
 import { styles, headerHeight, scrollheight } from './styles';
@@ -37,7 +37,7 @@ class DashboardScreen extends React.Component {
   onEnterGroup(id, group) {
     this.props.navigator.push({
       screen: ORDERS_GROUP_SCREEN,
-      passProps: { group, disabled: id !== TODAY_ID }
+      passProps: { id, group, disabled: id !== TODAY_ID }
     });
   }
 

@@ -23,7 +23,8 @@ const OrdersRow = ({
     delivered,
   },
   onChangeOrderStatus,
-  statusLoading,
+  onEnterOrder,
+  loading,
   disabled = false,
 }) => (
   <View style={styles.container}>
@@ -52,12 +53,12 @@ const OrdersRow = ({
         textStyle={styles.linkText}
         containerStyle={styles.linkTextContainer}
         text={translate('ORDERS_GROUP.details')}
-        onPress={() => {}}
+        onPress={onEnterOrder}
       />
     </View>
     {!disabled &&
       <View style={styles.checkContainer}>
-        {statusLoading
+        {loading
           ? <ActivityIndicator size="small" />
           : (
             <TouchableIcon onPress={() => onChangeOrderStatus(id, !delivered)}>
@@ -78,7 +79,8 @@ const OrdersRow = ({
 OrdersRow.propTypes = {
   order: object.isRequired,
   onChangeOrderStatus: func.isRequired,
-  statusLoading: bool.isRequired,
+  onEnterOrder: func.isRequired,
+  loading: bool.isRequired,
   disabled: bool,
 };
 

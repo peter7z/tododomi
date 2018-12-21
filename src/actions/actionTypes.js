@@ -8,7 +8,7 @@ export const GET_ORDERS_SUCCESS = 'GET_ORDERS_SUCCESS';
 export const GET_ORDERS_FAIL = 'GET_ORDERS_FAIL';
 export const SET_ORDERS = 'SET_ORDERS';
 
-// orders orders group
+// orders group
 export const GET_ORDERS_GROUP = 'GET_ORDERS_GROUP';
 export const GET_ORDERS_GROUP_SUCCESS = 'GET_ORDERS_GROUP_SUCCESS';
 export const GET_ORDERS_GROUP_FAIL = 'GET_ORDERS_GROUP_FAIL';
@@ -18,3 +18,8 @@ export const START_ORDERS_GROUP_FAIL = 'START_ORDERS_GROUP_FAIL';
 export const SET_ORDER_STATUS = 'SET_ORDER_STATUS';
 export const SET_ORDER_STATUS_SUCCESS = 'SET_ORDER_STATUS_SUCCESS';
 export const SET_ORDER_STATUS_FAIL = 'SET_ORDER_STATUS_FAIL';
+
+// order detail
+export const GET_ORDER = 'GET_ORDER';
+export const GET_ORDER_SUCCESS = 'GET_ORDER_SUCCESS';
+export const GET_ORDER_FAIL = 'GET_ORDER_FAIL';

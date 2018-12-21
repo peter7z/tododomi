@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableHighlight, Text } from 'react-native';
+import { TouchableHighlight, Text, ViewPropTypes } from 'react-native';
 import { string, func, bool, number } from 'prop-types';
 
 import { lightGreyColor, primaryActiveColor } from 'constants/styleConstants';
@@ -13,6 +13,8 @@ const Button = ({
   marginBottom,
   marginTop,
   marginHorizontal,
+  containerStyle,
+  underlayColor,
   disabled = false
 }) => {
   const styles = stylesProps(width, marginBottom, marginTop, marginHorizontal);
@@ -27,8 +29,8 @@ const Button = ({
     <TouchableHighlight
       onPress={disabled ? null : onPress}
       activeOpacity={1}
-      underlayColor={transparent ? lightGreyColor : primaryActiveColor}
-      style={[buttonContainer, transparent && transparentStyle]}
+      underlayColor={underlayColor || (transparent ? lightGreyColor : primaryActiveColor)}
+      style={[buttonContainer, transparent && transparentStyle, containerStyle]}
     >
       <Text style={[buttonText, transparent && transparentText]}>
         {title}
@@ -40,12 +42,14 @@ const Button = ({
 Button.propTypes = {
   title: string.isRequired,
   onPress: func.isRequired,
+  containerStyle: ViewPropTypes.style,
   transparent: bool,
   disabled: bool,
   width: string,
   marginBottom: number,
   marginTop: number,
-  marginHorizontal: number
+  marginHorizontal: number,
+  underlayColor: string,
 };
 
 export default Button;

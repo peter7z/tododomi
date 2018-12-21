@@ -1,19 +1,23 @@
 import React from 'react';
 import { View, ScrollView, Text, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
-import { object, func, bool } from 'prop-types';
+import { object, func, bool, string } from 'prop-types';
 
 import translate from 'utils/i18n';
 import OrdersHeader from 'components/Orders/OrdersHeader';
 import OrdersRowHeader from 'components/Orders/OrdersRowHeader';
 import OrdersRow from 'components/Orders/OrdersRow';
 import { getOrdersGroup, startOrdersGroup, setOrderStatus } from 'actions/orderActions';
+import { ORDER_DETAIL_SCREEN } from '../../screens';
 import styles from './styles';
 
 class OrdersGroupScreen extends React.Component {
   constructor() {
     super();
 
+    this.state = { changingId: 0 };
+
+    this.onEnterOrder = this.onEnterOrder.bind(this);
     this.onChangeOrderStatus = this.onChangeOrderStatus.bind(this);
     this.onGroupStart = this.onGroupStart.bind(this);
     this.onBack = this.onBack.bind(this);
@@ -29,16 +33,33 @@ class OrdersGroupScreen extends React.Component {
   }
 
   onGroupStart() {
-    const { startGroup, group: { orderIds } } = this.props;
-    startGroup(orderIds);
+    const { id, startGroup, group } = this.props;
+    startGroup(id, group);
   }
 
-  onChangeOrderStatus(id, delivered) {
-    this.props.setOrderStatus(id, delivered);
+  onEnterOrder(group, order) {
+    const { id, navigator, disabled } = this.props;
+    navigator.push({
+      screen: ORDER_DETAIL_SCREEN,
+      passProps: { id, group, order, disabled }
+    });
+  }
+
+  onChangeOrderStatus(orderId, delivered) {
+    if (!this.state.changingId) {
+      this.setState(
+        { changingId: orderId },
+        async () => {
+          const { id, group, setOrderStatus } = this.props;
+          await setOrderStatus(id, group, orderId, delivered);
+          this.setState({ changingId: 0 });
+        });
+    }
   }
 
   render() {
     const {
+      group,
       group: { grocery },
       ordersGroup: { readyToDeliver, orders },
       loading,
@@ -47,9 +68,11 @@ class OrdersGroupScreen extends React.Component {
       disabled,
     } = this.props;
 
+    const { changingId } = this.state;
+
     return (
       <View>
-        <OrdersHeader onBack={this.onBack} group={this.props.group} />
+        <OrdersHeader onBack={this.onBack} group={group} />
         <ScrollView style={styles.scroll}>
           <Text style={styles.title}>{translate('ORDERS_GROUP.stops')}</Text>
           <View>
@@ -69,7 +92,8 @@ class OrdersGroupScreen extends React.Component {
                       key={order.id}
                       order={order}
                       onChangeOrderStatus={this.onChangeOrderStatus}
-                      statusLoading={statusLoading}
+                      onEnterOrder={() => this.onEnterOrder(group, order)}
+                      loading={changingId === order.id && statusLoading}
                       disabled={disabled}
                     />
                   )}
@@ -89,6 +113,7 @@ OrdersGroupScreen.navigatorStyle = {
 
 OrdersGroupScreen.propTypes = {
   navigator: object.isRequired,
+  id: string.isRequired,
   group: object.isRequired,
   ordersGroup: object.isRequired,
   getOrdersGroup: func.isRequired,
@@ -109,8 +134,9 @@ const mapState = state => ({
 
 const mapDispatch = dispatch => ({
   getOrdersGroup: orderIds => dispatch(getOrdersGroup(orderIds)),
-  startGroup: orderIds => dispatch(startOrdersGroup(orderIds)),
-  setOrderStatus: (id, delivered) => dispatch(setOrderStatus(id, delivered)),
+  startGroup: (id, group, orderIds) => dispatch(startOrdersGroup(id, group, orderIds)),
+  setOrderStatus: (id, group, orderId, delivered) =>
+    dispatch(setOrderStatus(id, group, orderId, delivered)),
 });
 
 export default connect(mapState, mapDispatch)(OrdersGroupScreen);

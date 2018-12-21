@@ -50,5 +50,12 @@ export default {
     store: 'Tienda',
     details: 'Detalles',
     stops: 'Paradas'
+  },
+
+  ORDER_ITEMS_SCREEN: {
+    details: 'Details',
+    title: 'Detalles de la orden',
+    noDelivered: 'No entregada',
+    delivered: 'Entrega realizada'
   }
 };

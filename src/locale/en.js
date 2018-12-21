@@ -48,5 +48,12 @@ export default {
     store: 'Store',
     details: 'Details',
     stops: 'Stops'
+  },
+
+  ORDER_ITEMS_SCREEN: {
+    details: 'Details',
+    title: 'Order details',
+    noDelivered: 'Not delivered',
+    delivered: 'Delivered'
   }
 };
