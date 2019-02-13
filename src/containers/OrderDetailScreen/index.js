@@ -50,7 +50,7 @@ class OrderDetailScreen extends Component {
       group,
       order,
       currentOrder: {
-        order: { id, grocery, variants } = {},
+        order: { id, shop, variants } = {},
         consumer
       },
       loading,
@@ -72,7 +72,7 @@ class OrderDetailScreen extends Component {
             : <View style={styles.scrollContent}>
               {Boolean(id) &&
                 <ProductList
-                  grocery={grocery}
+                  grocery={shop}
                   products={variants}
                   consumer={consumer}
                   order={order}

@@ -11,16 +11,16 @@ import styles from './styles';
 
 const OrdersGroup = ({
   group,
-  group: { deliveryTime, grocery, ordersCount, completedOrdersCount, active },
+  group: { deliveryTime, shop: { name, logo }, ordersCount, completedOrdersCount, active },
   onEnterGroup
 }) => (
   <View style={styles.container}>
-    <Image style={styles.logo} source={{ uri: grocery.logo.smallSize.url }} />
+    <Image style={styles.logo} source={{ uri: logo.smallSize.url }} />
     <View style={styles.info}>
       <View style={styles.infoTop}>
         <Text style={styles.time}>{deliveryTime}</Text>
         <Text style={styles.separator}>|</Text>
-        <Text style={styles.name}>{grocery.name}</Text>
+        <Text style={styles.name}>{name}</Text>
       </View>
       <View style={styles.infoBottom}>
         <StopIcon />

@@ -9,7 +9,7 @@ import styles, { groceryImageSize } from './styles';
 
 const OrdersHeader = ({
   group: {
-    grocery: { name, logo, address: { name: addressName } },
+    shop: { name, logo, address: { name: addressName } },
     ordersCount,
     completedOrdersCount,
     deliveryTime

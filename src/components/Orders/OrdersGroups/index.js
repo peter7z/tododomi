@@ -17,7 +17,7 @@ const OrdersGroups = ({ day, groups, isCollapsed, onCollapse, onEnterGroup }) =>
       />
     </View>
     {!isCollapsed && groups.map((group) => {
-      const { grocery: { name }, deliveryTime } = group;
+      const { shop: { name }, deliveryTime } = group;
       return (
         <OrderGroup
           key={`${name}-${deliveryTime}`}

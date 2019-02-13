@@ -60,3 +60,6 @@ buck-out/
 
 # PODS
 ios/Pods
+
+# IOS Workspace Settings
+/ios/*.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
