@@ -60,14 +60,13 @@ class OrdersGroupScreen extends React.Component {
   render() {
     const {
       group,
-      group: { grocery },
+      group: { shop },
       ordersGroup: { readyToDeliver, orders },
       loading,
       startLoading,
       statusLoading,
       disabled,
     } = this.props;
-
     const { changingId } = this.state;
 
     return (
@@ -81,7 +80,7 @@ class OrdersGroupScreen extends React.Component {
               : orders && (
                 <View>
                   <OrdersRowHeader
-                    grocery={grocery}
+                    grocery={shop}
                     onGroupStart={this.onGroupStart}
                     readyToDeliver={readyToDeliver}
                     startLoading={startLoading}

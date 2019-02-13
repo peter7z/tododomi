@@ -11,7 +11,7 @@ import styles, { groceryImageSize, locationIconSize } from './styles';
 
 const OrdersDetailHeader = ({
   group: {
-    grocery: {
+    shop: {
       name,
       logo,
       address: { name: address }

@@ -60,13 +60,13 @@ export const ordersReducer = (state = initialState, action) => {
     }
 
     case types.START_ORDERS_GROUP_SUCCESS: {
-      const { id, group: { grocery: { name }, deliveryTime } } = action;
+      const { id, group: { shop: { name }, deliveryTime } } = action;
 
       const ordersGroups = state.get('ordersGroups').toJS();
       ordersGroups
         .find(oGroup => oGroup.id === id)
         .groups
-        .find(group => group.deliveryTime === deliveryTime && group.grocery.name === name)
+        .find(group => group.deliveryTime === deliveryTime && group.shop.name === name)
         .active = true;
 
       let newState = state.set('ordersGroups', Immutable.fromJS(ordersGroups));
@@ -85,7 +85,7 @@ export const ordersReducer = (state = initialState, action) => {
     case types.SET_ORDER_STATUS_SUCCESS: {
       const {
         id,
-        group: { grocery: { name }, deliveryTime, ordersCount },
+        group: { shop: { name }, deliveryTime, ordersCount },
         orderId,
         delivered
       } = action;
@@ -106,7 +106,7 @@ export const ordersReducer = (state = initialState, action) => {
         const group = ordersGroups
           .find(oGroup => oGroup.id === id)
           .groups
-          .find(group => group.deliveryTime === deliveryTime && group.grocery.name === name);
+          .find(group => group.deliveryTime === deliveryTime && group.shop.name === name);
         group.completedOrdersCount += 1;
         group.active = ordersCount !== group.completedOrdersCount;
         newState = newState.set('ordersGroups', Immutable.fromJS(ordersGroups));
