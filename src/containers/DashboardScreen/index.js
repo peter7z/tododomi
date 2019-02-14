@@ -1,6 +1,6 @@
 import { array, bool, func, object } from 'prop-types';
 import React from 'react';
-import { ActivityIndicator, ScrollView, View } from 'react-native';
+import { ScrollView, View, RefreshControl } from 'react-native';
 import { connect } from 'react-redux';
 
 import { getOrders, setOrders } from 'actions/orderActions';
@@ -18,6 +18,7 @@ class DashboardScreen extends React.Component {
   constructor() {
     super();
 
+    this.onPullToRefresh = this.onPullToRefresh.bind(this);
     this.onEnterGroup = this.onEnterGroup.bind(this);
     this.showProfile = this.showProfile.bind(this);
     this.onCollapse = this.onCollapse.bind(this);
@@ -39,6 +40,10 @@ class DashboardScreen extends React.Component {
       screen: ORDERS_GROUP_SCREEN,
       passProps: { id, group, disabled: id !== TODAY_ID }
     });
+  }
+
+  onPullToRefresh() {
+    this.props.getOrders();
   }
 
   showProfile() {
@@ -64,8 +69,15 @@ class DashboardScreen extends React.Component {
             />
           }
         />
-        <ScrollView style={[styles.scroll, { height: scrollheight }]}>
-          {loading && <ActivityIndicator style={styles.activity} size="small" />}
+        <ScrollView
+          style={[styles.scroll, { height: scrollheight }]}
+          refreshControl={
+            <RefreshControl
+              refreshing={loading}
+              onRefresh={this.onPullToRefresh}
+            />
+          }
+        >
           {!loading && (
             Boolean(ordersGroups.length)
               ? ordersGroups.map(({ id, day, groups, isCollapsed }) => (

@@ -41,7 +41,9 @@ export default {
     active: 'Active',
     today: 'Today',
     tomorrow: 'Tomorrow',
-    assign: 'No orders assigned'
+    emptyOrdersTitle: 'You don\'t have orders',
+    emptyOrdersDescription: 'Come again and refresh in 5 minutes',
+    emptyOrdersThanks: 'Thank you!'
   },
 
   ORDERS_GROUP: {

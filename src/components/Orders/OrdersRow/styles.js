@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
     borderBottomColor: greyListBorderColor,
     borderBottomWidth: 1,
     flexDirection: 'row',
+    height: 90,
     paddingHorizontal: 15,
-    paddingVertical: 10,
   },
 
   row: {

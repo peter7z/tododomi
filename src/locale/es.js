@@ -43,7 +43,9 @@ export default {
     active: 'Activa',
     today: 'Hoy',
     tomorrow: 'Mañana',
-    assign: 'No tienes órdenes asignadas'
+    emptyOrdersTitle: 'No tienes órdenes',
+    emptyOrdersDescription: 'Vuelve a refrescar en 5 minutos',
+    emptyOrdersThanks: 'Gracias!',
   },
 
   ORDERS_GROUP: {
@@ -53,7 +55,7 @@ export default {
   },
 
   ORDER_ITEMS_SCREEN: {
-    details: 'Details',
+    details: 'Detalles',
     title: 'Detalles de la orden',
     noDelivered: 'No entregada',
     delivered: 'Entrega realizada'
