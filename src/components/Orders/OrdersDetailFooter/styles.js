@@ -12,13 +12,15 @@ const styles = StyleSheet.create({
     marginHorizontal: 7.5,
   },
 
-  container: {
-    borderTopColor: greyBorderColor,
-    borderTopWidth: 1,
+  buttonsContainer: {
     flexDirection: 'row',
     paddingTop: 12,
-    paddingBottom: 26,
     justifyContent: 'center',
+  },
+
+  container: {
+    borderTopColor: greyBorderColor,
+    borderTopWidth: 1
   },
 });
 
