@@ -13,19 +13,21 @@ const OrdersDetailFooter = ({
   order: { id },
 }) => (
   <View style={[styles.container, { height }]}>
-    <Button
-      onPress={() => setOrderStatus(id, false)}
-      title={translate('ORDER_ITEMS_SCREEN.noDelivered')}
-      width={buttonWidth}
-      containerStyle={styles.firstButton}
-      underlayColor={redActiveColor}
-    />
-    <Button
-      onPress={() => setOrderStatus(id, true)}
-      title={translate('ORDER_ITEMS_SCREEN.delivered')}
-      width={buttonWidth}
-      containerStyle={styles.secondButton}
-    />
+    <View style={styles.buttonsContainer}>
+      <Button
+        onPress={() => setOrderStatus(id, false)}
+        title={translate('ORDER_ITEMS_SCREEN.noDelivered')}
+        width={buttonWidth}
+        containerStyle={styles.firstButton}
+        underlayColor={redActiveColor}
+      />
+      <Button
+        onPress={() => setOrderStatus(id, true)}
+        title={translate('ORDER_ITEMS_SCREEN.delivered')}
+        width={buttonWidth}
+        containerStyle={styles.secondButton}
+      />
+    </View>
   </View>
 );
 
