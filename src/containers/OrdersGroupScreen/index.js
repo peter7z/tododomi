@@ -21,36 +21,27 @@ class OrdersGroupScreen extends React.Component {
       showConfirmDialog: false,
       currentOrderId: 0
     };
-
-    this.onEnterOrder = this.onEnterOrder.bind(this);
-    this.onChangeOrderStatus = this.onChangeOrderStatus.bind(this);
-    this.onGroupStart = this.onGroupStart.bind(this);
-    this.onBack = this.onBack.bind(this);
-    this.onCloseModal = this.onCloseModal.bind(this);
-    this.onNotDelivered = this.onNotDelivered.bind(this);
-    this.onToggleChangeStatus = this.onToggleChangeStatus.bind(this);
-    this.onToggleCloseDialog = this.onToggleCloseDialog.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     const { getOrdersGroup, group: { orderIds } } = this.props;
     getOrdersGroup(orderIds);
   }
 
-  onBack() {
+  onBack = () => {
     this.props.navigator.pop();
   }
 
-  onCloseModal() {
+  onCloseModal = () => {
     this.props.navigator.dismissModal();
   }
 
-  onToggleCloseDialog() {
+  onToggleCloseDialog = () => {
     const { showConfirmDialog } = this.state;
     this.setState({ showConfirmDialog: !showConfirmDialog });
   }
 
-  onToggleChangeStatus(orderId) {
+  onToggleChangeStatus =(orderId) => {
     const { showConfirmDialog } = this.state;
     this.setState(
       {
@@ -59,12 +50,12 @@ class OrdersGroupScreen extends React.Component {
       });
   }
 
-  onGroupStart() {
+  onGroupStart = () => {
     const { id, startGroup, group } = this.props;
     startGroup(id, group);
   }
 
-  onEnterOrder(group, order) {
+  onEnterOrder = (group, order) => {
     const { id, navigator, disabled } = this.props;
     navigator.push({
       screen: ORDER_DETAIL_SCREEN,
@@ -72,7 +63,7 @@ class OrdersGroupScreen extends React.Component {
     });
   }
 
-  onChangeOrderStatus(delivered, notDeliveredReasons) {
+  onChangeOrderStatus = (delivered, notDeliveredReasons) => {
     const {
       currentOrderId,
       changingId,
@@ -95,7 +86,7 @@ class OrdersGroupScreen extends React.Component {
     }
   }
 
-  onNotDelivered() {
+  onNotDelivered = () => {
     this.props.navigator.showModal({
       screen: NOT_DELIVERED_REASONS_MODAL_SCREEN,
       passProps: {
