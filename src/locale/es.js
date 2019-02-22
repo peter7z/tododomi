@@ -53,7 +53,7 @@ export default {
     details: 'Detalles',
     stops: 'Paradas',
     modalTitle: 'Orden no entregada porque:',
-    modalPlaceholder: 'Escribe brevemente cuales fueron los inconvenientes que causaron que la órden no se entregara, gracias.',
+    modalPlaceholder: 'Escribe brevemente cuales fueron los inconvenientes que causaron que la orden no se entregara, gracias.',
     dialogTitle: 'Haz entregado la orden?',
     dialogText: 'Marca si has completado la entrega o no, y de ser la último opción, describe brevemente la razón.',
     dialogNotDeliveredButtonText: 'No entregada',
