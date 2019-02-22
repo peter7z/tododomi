@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { ActivityIndicator, ScrollView, View } from 'react-native';
 import { connect } from 'react-redux';
 import { bool, object, func, string } from 'prop-types';
-
+import translate from 'utils/i18n';
 import ProductList from 'components/Product/ProductList';
 import { getOrder, setOrderStatus } from 'actions/orderActions';
 import OrdersDetailHeader from 'components/Orders/OrdersDetailHeader';
 import OrdersDetailFooter from 'components/Orders/OrdersDetailFooter';
+import { NOT_DELIVERED_REASONS_MODAL_SCREEN } from '../../screens';
 
 import {
   headerHeight,
@@ -16,33 +17,39 @@ import {
 } from './styles';
 
 class OrderDetailScreen extends Component {
-  constructor() {
-    super();
-
-    this.state = { changingId: 0 };
-
-    this.onChangeOrderStatus = this.onChangeOrderStatus.bind(this);
-    this.onBack = this.onBack.bind(this);
-  }
-  componentDidMount() {
+  componentDidMount = () => {
     const { order: { id }, getOrder } = this.props;
     getOrder(id);
   }
 
-  onBack() {
+  onBack =() => {
     this.props.navigator.pop();
   }
 
-  onChangeOrderStatus(orderId, delivered) {
-    if (!this.state.changingId) {
-      this.setState(
-        { changingId: orderId },
-        async () => {
-          const { id, group, setOrderStatus } = this.props;
-          await setOrderStatus(id, group, orderId, delivered);
-          this.onBack();
-        });
-    }
+  onCloseModal = () => {
+    this.props.navigator.dismissModal();
+  }
+
+  onToggleChangeStatus = (delivered) => {
+    delivered ? this.onChangeOrderStatus(delivered, null) :
+      this.props.navigator.showModal({
+        screen: NOT_DELIVERED_REASONS_MODAL_SCREEN,
+        passProps: {
+          title: translate('ORDERS_GROUP.modalTitle'),
+          placeholder: translate('ORDERS_GROUP.modalPlaceholder'),
+          onSave: this.onChangeOrderStatus,
+          onBack: this.onCloseModal,
+          buttonText: translate('ORDERS_GROUP.confirmNotDeliveredButton')
+        }
+      });
+  }
+
+  onChangeOrderStatus = (delivered, notDeliveredReasons) => {
+    const { order: { id: orderId } } = this.props;
+    const { id, group, setOrderStatus } = this.props;
+    setOrderStatus(id, group, orderId, delivered, notDeliveredReasons);
+    !delivered && this.onCloseModal();
+    this.onBack();
   }
 
   render() {
@@ -84,8 +91,7 @@ class OrderDetailScreen extends Component {
         {!disabled &&
           <OrdersDetailFooter
             height={footerHeight}
-            order={order}
-            setOrderStatus={this.onChangeOrderStatus}
+            setOrderStatus={this.onToggleChangeStatus}
           />
         }
       </View>
@@ -117,8 +123,8 @@ const mapState = state => ({
 
 const mapDispatch = dispatch => ({
   getOrder: id => dispatch(getOrder(id)),
-  setOrderStatus: (id, group, orderId, delivered) =>
-    dispatch(setOrderStatus(id, group, orderId, delivered)),
+  setOrderStatus: (id, group, orderId, delivered, notDeliveredReasons) =>
+    dispatch(setOrderStatus(id, group, orderId, delivered, notDeliveredReasons)),
 });
 
 export default connect(mapState, mapDispatch)(OrderDetailScreen);

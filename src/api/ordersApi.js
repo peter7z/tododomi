@@ -14,8 +14,10 @@ class Order {
     return api.put(applyQueryParams('/deliverers/orders/start_delivery', { orderIds }));
   }
 
-  static setOrderStatus(id, delivered) {
-    return api.put(`/deliverers/orders/${id}`, { order: { delivered } });
+  static setOrderStatus(id, delivered, notDeliveredReasons) {
+    return api.put(`/deliverers/orders/${id}`, { order: delivered ?
+      { delivered } :
+      { delivered, not_delivered_reason: notDeliveredReasons } });
   }
 
   static getOrder(id) {

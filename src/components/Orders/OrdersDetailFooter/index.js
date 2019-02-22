@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { number, object, func } from 'prop-types';
+import { number, func } from 'prop-types';
 
 import { redActiveColor } from 'constants/styleConstants';
 import Button from 'components/Common/Button';
@@ -10,19 +10,18 @@ import styles, { buttonWidth } from './styles';
 const OrdersDetailFooter = ({
   height,
   setOrderStatus,
-  order: { id },
 }) => (
   <View style={[styles.container, { height }]}>
     <View style={styles.buttonsContainer}>
       <Button
-        onPress={() => setOrderStatus(id, false)}
+        onPress={() => setOrderStatus(false)}
         title={translate('ORDER_ITEMS_SCREEN.noDelivered')}
         width={buttonWidth}
         containerStyle={styles.firstButton}
         underlayColor={redActiveColor}
       />
       <Button
-        onPress={() => setOrderStatus(id, true)}
+        onPress={() => setOrderStatus(true)}
         title={translate('ORDER_ITEMS_SCREEN.delivered')}
         width={buttonWidth}
         containerStyle={styles.secondButton}
@@ -32,7 +31,6 @@ const OrdersDetailFooter = ({
 );
 
 OrdersDetailFooter.propTypes = {
-  order: object.isRequired,
   setOrderStatus: func.isRequired,
   height: number,
 };
