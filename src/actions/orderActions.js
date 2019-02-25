@@ -127,11 +127,11 @@ export const startOrdersGroup = (id, group, orderIds) =>
     }
   };
 
-export const setOrderStatus = (id, group, orderId, delivered) =>
+export const setOrderStatus = (id, group, orderId, delivered, notDeliveredReasons) =>
   async (dispatch) => {
     dispatch(setUserOrderStatus());
     try {
-      await ordersApi.setOrderStatus(orderId, delivered);
+      await ordersApi.setOrderStatus(orderId, delivered, notDeliveredReasons);
       dispatch(setOrderStatusSuccess(id, group, orderId, delivered));
     } catch (errors) {
       dispatch(setOrderStatusFail(errors));

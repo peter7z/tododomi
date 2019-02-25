@@ -51,7 +51,14 @@ export default {
   ORDERS_GROUP: {
     store: 'Tienda',
     details: 'Detalles',
-    stops: 'Paradas'
+    stops: 'Paradas',
+    modalTitle: 'Orden no entregada porque:',
+    modalPlaceholder: 'Escribe brevemente cuales fueron los inconvenientes que causaron que la orden no se entregara, gracias.',
+    dialogTitle: 'Haz entregado la orden?',
+    dialogText: 'Marca si has completado la entrega o no, y de ser la último opción, describe brevemente la razón.',
+    dialogNotDeliveredButtonText: 'No entregada',
+    dialogDeliveredButtonText: 'Entregada',
+    confirmNotDeliveredButton: 'Confirmar Orden No Entregada'
   },
 
   ORDER_ITEMS_SCREEN: {
@@ -59,5 +66,5 @@ export default {
     title: 'Detalles de la orden',
     noDelivered: 'No entregada',
     delivered: 'Entrega realizada'
-  }
+  },
 };

@@ -7,37 +7,55 @@ import translate from 'utils/i18n';
 import OrdersHeader from 'components/Orders/OrdersHeader';
 import OrdersRowHeader from 'components/Orders/OrdersRowHeader';
 import OrdersRow from 'components/Orders/OrdersRow';
+import ChangeOrderStatusDialog from 'components/Orders/ChangeOrderStatusDialog';
 import { getOrdersGroup, startOrdersGroup, setOrderStatus } from 'actions/orderActions';
-import { ORDER_DETAIL_SCREEN } from '../../screens';
+import { ORDER_DETAIL_SCREEN, NOT_DELIVERED_REASONS_MODAL_SCREEN } from '../../screens';
 import styles from './styles';
 
 class OrdersGroupScreen extends React.Component {
   constructor() {
     super();
 
-    this.state = { changingId: 0 };
-
-    this.onEnterOrder = this.onEnterOrder.bind(this);
-    this.onChangeOrderStatus = this.onChangeOrderStatus.bind(this);
-    this.onGroupStart = this.onGroupStart.bind(this);
-    this.onBack = this.onBack.bind(this);
+    this.state = {
+      changingId: 0,
+      showConfirmDialog: false,
+      currentOrderId: 0
+    };
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     const { getOrdersGroup, group: { orderIds } } = this.props;
     getOrdersGroup(orderIds);
   }
 
-  onBack() {
+  onBack = () => {
     this.props.navigator.pop();
   }
 
-  onGroupStart() {
+  onCloseModal = () => {
+    this.props.navigator.dismissModal();
+  }
+
+  onToggleCloseDialog = () => {
+    const { showConfirmDialog } = this.state;
+    this.setState({ showConfirmDialog: !showConfirmDialog });
+  }
+
+  onToggleChangeStatus =(orderId) => {
+    const { showConfirmDialog } = this.state;
+    this.setState(
+      {
+        showConfirmDialog: !showConfirmDialog,
+        currentOrderId: orderId,
+      });
+  }
+
+  onGroupStart = () => {
     const { id, startGroup, group } = this.props;
     startGroup(id, group);
   }
 
-  onEnterOrder(group, order) {
+  onEnterOrder = (group, order) => {
     const { id, navigator, disabled } = this.props;
     navigator.push({
       screen: ORDER_DETAIL_SCREEN,
@@ -45,16 +63,40 @@ class OrdersGroupScreen extends React.Component {
     });
   }
 
-  onChangeOrderStatus(orderId, delivered) {
-    if (!this.state.changingId) {
+  onChangeOrderStatus = (delivered, notDeliveredReasons) => {
+    const {
+      currentOrderId,
+      changingId,
+      showConfirmDialog
+    } = this.state;
+    if (!changingId) {
       this.setState(
-        { changingId: orderId },
+        { changingId: currentOrderId },
         async () => {
           const { id, group, setOrderStatus } = this.props;
-          await setOrderStatus(id, group, orderId, delivered);
-          this.setState({ changingId: 0 });
+          await setOrderStatus(id, group, currentOrderId, delivered, notDeliveredReasons);
+          this.setState(
+            {
+              changingId: 0,
+              showConfirmDialog: !showConfirmDialog
+            }
+          );
+          this.onCloseModal();
         });
     }
+  }
+
+  onNotDelivered = () => {
+    this.props.navigator.showModal({
+      screen: NOT_DELIVERED_REASONS_MODAL_SCREEN,
+      passProps: {
+        title: translate('ORDERS_GROUP.modalTitle'),
+        placeholder: translate('ORDERS_GROUP.modalPlaceholder'),
+        onSave: this.onChangeOrderStatus,
+        onBack: this.onCloseModal,
+        buttonText: translate('ORDERS_GROUP.confirmNotDeliveredButton'),
+      }
+    });
   }
 
   render() {
@@ -67,7 +109,7 @@ class OrdersGroupScreen extends React.Component {
       statusLoading,
       disabled,
     } = this.props;
-    const { changingId } = this.state;
+    const { changingId, showConfirmDialog } = this.state;
 
     return (
       <View>
@@ -90,7 +132,7 @@ class OrdersGroupScreen extends React.Component {
                     <OrdersRow
                       key={order.id}
                       order={order}
-                      onChangeOrderStatus={this.onChangeOrderStatus}
+                      onChangeOrderStatus={this.onToggleChangeStatus}
                       onEnterOrder={() => this.onEnterOrder(group, order)}
                       loading={changingId === order.id && statusLoading}
                       disabled={disabled}
@@ -101,6 +143,13 @@ class OrdersGroupScreen extends React.Component {
             }
           </View>
         </ScrollView>
+        {showConfirmDialog &&
+          <ChangeOrderStatusDialog
+            onNotDelivered={this.onNotDelivered}
+            onDelivered={() => this.onChangeOrderStatus(true, null)}
+            onClose={this.onToggleCloseDialog}
+          />
+        }
       </View>
     );
   }
@@ -134,8 +183,8 @@ const mapState = state => ({
 const mapDispatch = dispatch => ({
   getOrdersGroup: orderIds => dispatch(getOrdersGroup(orderIds)),
   startGroup: (id, group, orderIds) => dispatch(startOrdersGroup(id, group, orderIds)),
-  setOrderStatus: (id, group, orderId, delivered) =>
-    dispatch(setOrderStatus(id, group, orderId, delivered)),
+  setOrderStatus: (id, group, orderId, delivered, notDeliveredReasons) =>
+    dispatch(setOrderStatus(id, group, orderId, delivered, notDeliveredReasons)),
 });
 
 export default connect(mapState, mapDispatch)(OrdersGroupScreen);

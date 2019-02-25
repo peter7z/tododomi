@@ -49,7 +49,14 @@ export default {
   ORDERS_GROUP: {
     store: 'Store',
     details: 'Details',
-    stops: 'Stops'
+    stops: 'Stops',
+    modalTitle: 'Order not delivered because:',
+    modalPlaceholder: 'Write briefly what were the inconveniences that caused the order was not delivered, thank you.',
+    dialogTitle: 'Did you deliver the order?',
+    dialogText: 'Check if you have completed the delivery or not, and if it is the last option, briefly describe the reason.',
+    dialogNotDeliveredButtonText: 'Not delivered',
+    dialogDeliveredButtonText: 'Delivered',
+    confirmNotDeliveredButton: 'Confirm Undelivered Order'
   },
 
   ORDER_ITEMS_SCREEN: {
