@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { View, KeyboardAvoidingView, TouchableHighlight, TextInput, Image } from 'react-native';
 import { string, func } from 'prop-types';
 import crossIcon from 'assets/images/cross-black.png';
@@ -7,7 +7,7 @@ import Header from 'components/Common/Header';
 import ModalFooter from './ModalFooter';
 import { headerHeight, footerHeight, styles } from './styles';
 
-class NotDeliveredReasonsModal extends Component {
+class NotDeliveredReasonsModal extends PureComponent {
     state = {
       text: '',
     };
