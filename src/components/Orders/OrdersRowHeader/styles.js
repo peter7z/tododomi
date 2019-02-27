@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native';
 import {
-  greyListBorderColor,
   secondaryColor,
   greyContentColor,
-  fontMedium
+  fontMedium,
+  lightGreyColor
 } from 'constants/styleConstants';
 
 export const groceryLogoSize = 40;
@@ -15,12 +15,29 @@ const styles = StyleSheet.create({
   nameBold: { fontFamily: fontMedium },
 
   container: {
-    alignItems: 'center',
-    borderBottomColor: greyListBorderColor,
-    borderBottomWidth: 1,
+    marginTop: 25,
+    alignItems: 'flex-start',
     flexDirection: 'row',
     paddingHorizontal: 15,
     height: 90,
+  },
+
+  bags: {
+    marginTop: 5,
+    marginLeft: -2,
+    alignItems: 'center',
+    flexDirection: 'row'
+  },
+
+  leftContainer: {
+    alignItems: 'center',
+    width: '15%',
+  },
+
+  line: {
+    backgroundColor: lightGreyColor,
+    width: 2,
+    flex: 1,
   },
 
   row: {

@@ -8,6 +8,8 @@ import LinkButton from 'components/Common/LinkButton';
 import TouchableIcon from 'components/Common/TouchableIcon';
 import { CheckIcon, CircleCrossIcon, LocationIcon, CircleIcon } from 'components/Icons';
 import { openMapAndDriveTo } from 'utils/helpers';
+import { primaryActiveColor, redColor } from 'constants/styleConstants';
+
 import styles, {
   userLogoSize,
   checkSize,
@@ -25,10 +27,31 @@ const OrdersRow = ({
   onChangeOrderStatus,
   onEnterOrder,
   loading,
+  last,
   disabled = false,
 }) => (
   <View style={styles.container}>
-    <Avatar name={fullName} avatar={avatar} width={userLogoSize} height={userLogoSize} />
+    <View style={styles.leftContainer}>
+      <Avatar
+        style={[
+          (delivered != null) && { borderWidth: 2 },
+          { borderColor: delivered ? primaryActiveColor : redColor }
+        ]}
+        name={fullName}
+        avatar={avatar}
+        width={userLogoSize}
+        height={userLogoSize}
+      />
+      {
+        !last &&
+          <View
+            style={[
+              styles.line,
+              (delivered != null) && { backgroundColor: delivered ? primaryActiveColor : redColor }
+            ]}
+          />
+      }
+    </View>
     <View style={styles.row}>
       <Text style={styles.name}>
         <Text style={styles.nameBold}>#{id}</Text>
@@ -82,6 +105,7 @@ OrdersRow.propTypes = {
   onEnterOrder: func.isRequired,
   loading: bool.isRequired,
   disabled: bool,
+  last: bool,
 };
 
 export default OrdersRow;

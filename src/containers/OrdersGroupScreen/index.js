@@ -122,13 +122,14 @@ class OrdersGroupScreen extends React.Component {
               : orders && (
                 <View>
                   <OrdersRowHeader
+                    bags={orders.length}
                     grocery={shop}
                     onGroupStart={this.onGroupStart}
                     readyToDeliver={readyToDeliver}
                     startLoading={startLoading}
                     disabled={disabled}
                   />
-                  {orders.map(order =>
+                  {orders.slice(0, orders.length).map((order, index) =>
                     <OrdersRow
                       key={order.id}
                       order={order}
@@ -136,6 +137,7 @@ class OrdersGroupScreen extends React.Component {
                       onEnterOrder={() => this.onEnterOrder(group, order)}
                       loading={changingId === order.id && statusLoading}
                       disabled={disabled}
+                      last={(index == orders.length - 1)}
                     />
                   )}
                 </View>

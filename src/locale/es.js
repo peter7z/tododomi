@@ -49,6 +49,7 @@ export default {
   },
 
   ORDERS_GROUP: {
+    bags: 'Bolsa',
     store: 'Tienda',
     details: 'Detalles',
     stops: 'Paradas',
