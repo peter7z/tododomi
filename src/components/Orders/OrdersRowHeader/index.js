@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, Text, ActivityIndicator } from 'react-native';
-import { object, bool, func } from 'prop-types';
+import { object, bool, func, number } from 'prop-types';
 
 import Avatar from 'components/Common/Avatar';
 import translate from 'utils/i18n';
-import { CheckIcon, CircleIcon } from 'components/Icons';
+import { CheckIcon, CircleIcon, BoxIcon } from 'components/Icons';
 import TouchableIcon from 'components/Common/TouchableIcon';
+import { primaryActiveColor } from 'constants/styleConstants';
 import styles, {
   groceryLogoSize,
   checkSize,
@@ -14,6 +15,7 @@ import styles, {
 } from './styles';
 
 const OrdersRowHeader = ({
+  bags,
   grocery: { name, logo, address, address: { name: addressName } },
   onGroupStart,
   readyToDeliver,
@@ -21,11 +23,15 @@ const OrdersRowHeader = ({
   disabled = false,
 }) => (
   <View style={styles.container}>
-    <Avatar
-      avatar={logo}
-      width={groceryLogoSize}
-      height={groceryLogoSize}
-    />
+    <View style={styles.leftContainer} >
+      <Avatar
+        avatar={logo}
+        width={groceryLogoSize}
+        height={groceryLogoSize}
+        style={readyToDeliver && { borderWidth: 2, borderColor: primaryActiveColor }}
+      />
+      <View style={[styles.line, readyToDeliver && { backgroundColor: primaryActiveColor }]} />
+    </View>
     <View style={styles.row}>
       <Text style={styles.name}><Text style={styles.nameBold}>{name}</Text> ({translate('ORDERS_GROUP.store')})</Text>
       {address &&
@@ -37,6 +43,12 @@ const OrdersRowHeader = ({
           {addressName}
         </Text>
       }
+      <View style={styles.bags}>
+        <BoxIcon />
+        <Text>
+          {` ${bags} ${translate('ORDERS_GROUP.bags')}${(bags == 1) ? '' : 's'}`}
+        </Text>
+      </View>
     </View>
     {!disabled &&
       <View style={styles.checkContainer}>
@@ -57,6 +69,7 @@ const OrdersRowHeader = ({
 );
 
 OrdersRowHeader.propTypes = {
+  bags: number.isRequired,
   grocery: object.isRequired,
   readyToDeliver: bool.isRequired,
   onGroupStart: func.isRequired,

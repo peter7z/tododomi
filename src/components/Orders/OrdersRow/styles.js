@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
 import {
-  greyListBorderColor,
   secondaryColor,
   greyContentColor,
   groceryGreyColor,
-  fontMedium
+  fontMedium,
+  lightGreyColor
 } from 'constants/styleConstants';
 
 export const userLogoSize = 32;
@@ -19,12 +19,21 @@ const styles = StyleSheet.create({
   location: { paddingHorizontal: 5 },
 
   container: {
-    alignItems: 'center',
-    borderBottomColor: greyListBorderColor,
-    borderBottomWidth: 1,
+    alignItems: 'flex-start',
     flexDirection: 'row',
     height: 90,
     paddingHorizontal: 15,
+  },
+
+  leftContainer: {
+    alignItems: 'center',
+    width: '15%',
+  },
+
+  line: {
+    flex: 1,
+    width: 2,
+    backgroundColor: lightGreyColor
   },
 
   row: {

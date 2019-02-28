@@ -7,12 +7,13 @@ import styles from './styles';
 
 const Avatar = ({ name, avatar, onPress, width = 32, height = 32, style }) => {
   const roundedStyle = { width, height, borderRadius: width / 2 };
+  const roundedStyleBig = { width: width + 3, height: height + 3, borderRadius: (width + 3) / 2 };
 
   return (
     <TouchableOpacity
       disabled={onPress === undefined}
       onPress={onPress}
-      style={[styles.container, roundedStyle, style]}
+      style={[styles.container, roundedStyleBig, style]}
     >
       {
         avatar && avatar.bigSize && avatar.bigSize.url
