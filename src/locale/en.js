@@ -34,12 +34,15 @@ export default {
   },
 
   DASHBOARD: {
-    title: 'Orders'
+    title: 'Orders',
+    completed: 'COMPLETED',
+    next: 'UPCOMING',
   },
 
   ORDERS: {
     active: 'Active',
     today: 'Today',
+    yesterday: 'Yesterday',
     tomorrow: 'Tomorrow',
     emptyOrdersTitle: 'You don\'t have orders',
     emptyOrdersDescription: 'Come again and refresh in 5 minutes',

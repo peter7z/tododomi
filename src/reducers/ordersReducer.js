@@ -8,6 +8,7 @@ export const initialState = Immutable.Map({
   startGroupLoading: false,
   setOrderLoading: false,
   ordersGroups: Immutable.List(),
+  completedOrdersGroups: Immutable.List(),
   ordersGroup: Immutable.Map(),
   currentOrder: Immutable.Map()
 });
@@ -24,6 +25,11 @@ export const ordersReducer = (state = initialState, action) => {
       const newState = state.set('ordersLoading', false);
       return newState.set('ordersGroups', Immutable.fromJS(ordersGroups));
     }
+    case types.GET_COMPLETED_ORDERS_SUCCESS: {
+      const { ordersGroups } = action;
+      const newState = state.set('ordersLoading', false);
+      return newState.set('completedOrdersGroups', Immutable.fromJS(ordersGroups));
+    }
 
     case types.GET_ORDER_SUCCESS: {
       const { order } = action;
@@ -36,6 +42,10 @@ export const ordersReducer = (state = initialState, action) => {
       return state.set('ordersLoading', false);
     }
 
+    case types.SET_COMPLETED_ORDERS: {
+      const { ordersGroups } = action;
+      return state.set('completedOrdersGroups', Immutable.fromJS(ordersGroups));
+    }
     case types.SET_ORDERS: {
       const { ordersGroups } = action;
       return state.set('ordersGroups', Immutable.fromJS(ordersGroups));

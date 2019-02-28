@@ -6,6 +6,10 @@ class Order {
     return api.get('/deliverers/orders');
   }
 
+  static getCompletedOrders() {
+    return api.get('/deliverers/orders/completed');
+  }
+
   static getOrdersGroup(orderIds) {
     return api.get(applyQueryParams('/deliverers/orders/range', { orderIds }));
   }

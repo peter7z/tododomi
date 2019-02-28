@@ -27,6 +27,11 @@ export const getOrdersSuccess = ordersGroups => ({
   ordersGroups,
 });
 
+export const getCompletedOrdersSuccess = ordersGroups => ({
+  type: types.GET_COMPLETED_ORDERS_SUCCESS,
+  ordersGroups,
+});
+
 export const getOrdersFail = errors => ({
   type: types.GET_ORDERS_FAIL,
   errors
@@ -34,6 +39,11 @@ export const getOrdersFail = errors => ({
 
 export const setOrders = ordersGroups => ({
   type: types.SET_ORDERS,
+  ordersGroups,
+});
+
+export const setCompletedOrders = ordersGroups => ({
+  type: types.SET_COMPLETED_ORDERS,
   ordersGroups,
 });
 
@@ -100,6 +110,17 @@ export const getOrders = () =>
     try {
       const ordersGroups = await ordersApi.getOrders();
       dispatch(getOrdersSuccess(ordersGroupsToArray(ordersGroups)));
+    } catch (errors) {
+      dispatch(getOrdersFail(errors));
+    }
+  };
+
+export const getCompletedOrders = () =>
+  async (dispatch) => {
+    dispatch(getUserOrders());
+    try {
+      const ordersGroups = await ordersApi.getCompletedOrders();
+      dispatch(getCompletedOrdersSuccess(ordersGroupsToArray(ordersGroups)));
     } catch (errors) {
       dispatch(getOrdersFail(errors));
     }
