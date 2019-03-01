@@ -44,6 +44,9 @@ class NotDeliveredReasonsModal extends PureComponent {
             underlineColorAndroid={transparentColor}
             multiline
             textAlignVertical="top"
+            returnKeyType="done"
+            blurOnSubmit={Boolean(true)}
+            autoCorrect={Boolean(false)}
           />
           {onSave &&
           <ModalFooter
