@@ -5,8 +5,10 @@ export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 // order actions
 export const GET_ORDERS = 'GET_ORDERS';
 export const GET_ORDERS_SUCCESS = 'GET_ORDERS_SUCCESS';
+export const GET_COMPLETED_ORDERS_SUCCESS = 'GET_COMPLETED_ORDERS_SUCCESS';
 export const GET_ORDERS_FAIL = 'GET_ORDERS_FAIL';
 export const SET_ORDERS = 'SET_ORDERS';
+export const SET_COMPLETED_ORDERS = 'SET_COMPLETED_ORDERS';
 
 // orders group
 export const GET_ORDERS_GROUP = 'GET_ORDERS_GROUP';

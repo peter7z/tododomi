@@ -37,11 +37,14 @@ export default {
     title: 'Órdenes',
     today: 'Hoy',
     tomorrow: 'Mañana',
+    completed: 'COMPLETADAS',
+    next: 'PRÓXIMAS',
   },
 
   ORDERS: {
     active: 'Activa',
     today: 'Hoy',
+    yesterday: 'Ayer',
     tomorrow: 'Mañana',
     emptyOrdersTitle: 'No tienes órdenes',
     emptyOrdersDescription: 'Vuelve a refrescar en 5 minutos',
