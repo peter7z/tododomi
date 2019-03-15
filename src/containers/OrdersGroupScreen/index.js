@@ -52,7 +52,7 @@ class OrdersGroupScreen extends React.Component {
 
   onGroupStart = () => {
     const { id, startGroup, group } = this.props;
-    startGroup(id, group);
+    startGroup(id, group, group.orderIds);
   }
 
   onEnterOrder = (group, order) => {
