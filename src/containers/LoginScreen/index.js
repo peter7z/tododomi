@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ImageBackground, View, Image, Text } from 'react-native';
+import { ImageBackground, KeyboardAvoidingView, Image, Text } from 'react-native';
 import { connect } from 'react-redux';
 
 import translate from 'utils/i18n';
@@ -16,11 +16,11 @@ const LoginScreen = ({ login }) => (
     style={styles.bgImage}
     source={bg}
   >
-    <View style={styles.container}>
+    <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
       <Image style={styles.logo} source={logo} />
       <Text style={styles.app}>{translate('SIGN_IN.app')}</Text>
       <LoginForm onSubmit={login} />
-    </View>
+    </KeyboardAvoidingView>
   </ImageBackground>
 );
 
