@@ -11,6 +11,13 @@ export default {
     logout: 'Sign out'
   },
 
+  LOCATION_AUTHORIZATION: {
+    requires: 'App requires location tracking permission',
+    prompt: 'Would you like to open app settings?',
+    yes: 'Yes',
+    no: 'No'
+  },
+
   PROFILE: {
     configurations: 'My configurations',
     logoutRow: 'Logout',
