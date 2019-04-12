@@ -11,10 +11,17 @@ export default {
     logout: 'Cerrar sesión'
   },
 
+  LOCATION_AUTHORIZATION: {
+    requires: 'Todomi necesita permisos de tracking',
+    prompt: 'Quieres abrir las opciones de la aplicación?',
+    yes: 'Si',
+    no: 'No'
+  },
+
   PROFILE: {
     configurations: 'Mis configuraciones',
     logoutRow: 'Cerrar sesión',
-    changeRow: 'Cambiar contraseña'
+    changeRow: 'Cambiar contraseña',
   },
 
   CHANGE_PASSWORD: {

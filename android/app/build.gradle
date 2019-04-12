@@ -149,6 +149,7 @@ android {
 }
 
 dependencies {
+    compile project(':@mauron85/react-native-background-geolocation')
     compile project(':react-native-splash-screen')
     compile project(':react-native-i18n')
     compile project(':react-native-navigation')

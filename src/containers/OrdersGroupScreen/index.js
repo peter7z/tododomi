@@ -8,6 +8,7 @@ import OrdersHeader from 'components/Orders/OrdersHeader';
 import OrdersRowHeader from 'components/Orders/OrdersRowHeader';
 import OrdersRow from 'components/Orders/OrdersRow';
 import ChangeOrderStatusDialog from 'components/Orders/ChangeOrderStatusDialog';
+import ReportLocation from 'utils/ReportLocation';
 import { getOrdersGroup, startOrdersGroup, setOrderStatus } from 'actions/orderActions';
 import { ORDER_DETAIL_SCREEN, NOT_DELIVERED_REASONS_MODAL_SCREEN } from '../../screens';
 import styles from './styles';
@@ -24,8 +25,10 @@ class OrdersGroupScreen extends React.Component {
   }
 
   componentDidMount = () => {
-    const { getOrdersGroup, group: { orderIds } } = this.props;
+    const { uid, getOrdersGroup, group: { orderIds, ordersGroupId } } = this.props;
     getOrdersGroup(orderIds);
+    this.ReportLocation = new ReportLocation({ uid, ordersGroupId });
+    this.ReportLocation.startTracking();
   }
 
   onBack = () => {
@@ -41,7 +44,7 @@ class OrdersGroupScreen extends React.Component {
     this.setState({ showConfirmDialog: !showConfirmDialog });
   }
 
-  onToggleChangeStatus =(orderId) => {
+  onToggleChangeStatus = (orderId) => {
     const { showConfirmDialog } = this.state;
     this.setState(
       {
@@ -113,6 +116,7 @@ class OrdersGroupScreen extends React.Component {
 
     return (
       <View>
+
         <OrdersHeader onBack={this.onBack} group={group} />
         <ScrollView style={styles.scroll}>
           <Text style={styles.title}>{translate('ORDERS_GROUP.stops')}</Text>
@@ -164,6 +168,7 @@ OrdersGroupScreen.navigatorStyle = {
 OrdersGroupScreen.propTypes = {
   navigator: object.isRequired,
   id: string.isRequired,
+  uid: string.isRequired,
   group: object.isRequired,
   ordersGroup: object.isRequired,
   getOrdersGroup: func.isRequired,
@@ -180,6 +185,7 @@ const mapState = state => ({
   startLoading: state.getIn(['orders', 'startGroupLoading']),
   statusLoading: state.getIn(['orders', 'setOrderLoading']),
   ordersGroup: state.getIn(['orders', 'ordersGroup']).toJS(),
+  uid: state.getIn(['session', 'user', 'uid']),
 });
 
 const mapDispatch = dispatch => ({

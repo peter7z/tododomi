@@ -8,6 +8,8 @@
 		"lint": "eslint src/**"
 	},
 	"dependencies": {
+		"@mauron85/react-native-background-geolocation": "^0.5.3",
+		"actioncable": "^5.2.3",
 		"humps": "^2.0.1",
 		"immutable": "^3.8.1",
 		"lodash": "^4.17.4",

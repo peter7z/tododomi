@@ -42,6 +42,7 @@ class DashboardScreen extends React.Component {
 
   onPullToRefresh = () => {
     this.props.getOrders();
+    this.props.getCompletedOrders();
   }
 
   showProfile = () => {
@@ -58,7 +59,7 @@ class DashboardScreen extends React.Component {
     const { ordersGroups, completedOrdersGroups } = this.props;
     const groups = this.state.completedTab ? completedOrdersGroups : ordersGroups;
 
-    return (Boolean(completedOrdersGroups.length) ?
+    return (Boolean(groups.length) ?
       groups.map(({ id, day, groups, isCollapsed }) => (
         <OrdersGroups
           key={id}
