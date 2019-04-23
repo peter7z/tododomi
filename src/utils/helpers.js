@@ -4,7 +4,7 @@ import humps from 'humps';
 
 import translate from 'utils/i18n';
 import { iPhoneXHeight } from 'constants/styleConstants';
-import { IOS_ROUTE_MAP, ANDROID_ROUTE_MAP } from 'constants/appConstants';
+import { IOS_GOOGLE_MAPS, ANDROID_GOOGLE_MAPS, IOS_MAPS } from 'constants/appConstants';
 
 export const applyQueryParams = (url, params) => {
   const queryParams = queryString.stringify(humps.decamelizeKeys(params), { arrayFormat: 'bracket' });
@@ -25,9 +25,14 @@ export const ordersGroupsToArray = ordersGroups => Object.entries(ordersGroups).
   isCollapsed: false,
 }));
 
-export const openMapAndDriveTo = (latitude, longitude) => {
-  const mapUrl = Platform.OS === 'ios' ? IOS_ROUTE_MAP : ANDROID_ROUTE_MAP;
-  Linking.openURL(`${mapUrl}${latitude},${longitude}`);
+export const openMapAndDriveTo = async (latitude, longitude) => {
+  const coordinates = `${latitude},${longitude}`;
+  let protocol;
+  if (Platform.OS === 'ios') {
+    const canOpenUrl = await Linking.canOpenURL(`${IOS_GOOGLE_MAPS}${coordinates}`);
+    protocol = canOpenUrl ? IOS_GOOGLE_MAPS : IOS_MAPS;
+  } else protocol = ANDROID_GOOGLE_MAPS;
+  Linking.openURL(protocol + coordinates);
 };
 
 export const callTo = phone => Linking.openURL(`tel:${phone}`);
