@@ -25,8 +25,8 @@ class OrdersGroupScreen extends React.Component {
   }
 
   componentDidMount = () => {
-    const { uid, getOrdersGroup, group: { orderIds, ordersGroupId } } = this.props;
-    getOrdersGroup(orderIds);
+    const { uid, getOrdersGroup, group: { ordersGroupId } } = this.props;
+    getOrdersGroup(ordersGroupId);
     this.ReportLocation = new ReportLocation({ uid, ordersGroupId });
     this.ReportLocation.startTracking();
   }

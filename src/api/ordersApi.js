@@ -10,8 +10,8 @@ class Order {
     return api.get('/deliverers/orders/completed');
   }
 
-  static getOrdersGroup(orderIds) {
-    return api.get(applyQueryParams('/deliverers/orders/range', { orderIds }));
+  static getOrdersGroup(ordersGroupId) {
+    return api.get(applyQueryParams('/deliverers/orders/range', { ordersGroupId }));
   }
 
   static startOrdersGroup(orderIds) {
