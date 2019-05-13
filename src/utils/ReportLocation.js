@@ -28,9 +28,9 @@ class ReportLocation {
     BackgroundGeolocation.on('authorization', (status) => {
       if (status !== BackgroundGeolocation.AUTHORIZED) {
         setTimeout(() =>
-          Alert.alert(translate('LOCALIZATION_AUTHORIZATION.requires'), 'LOCALIZATION_AUTHORIZATION.prompt', [
-            { text: translate('LOCALIZATION_AUTHORIZATION.yes'), onPress: () => BackgroundGeolocation.showAppSettings() },
-            { text: translate('LOCALIZATION_AUTHORIZATION.no'), onPress: () => false, style: 'cancel' }
+          Alert.alert(translate('LOCATION_AUTHORIZATION.requires'), translate('LOCATION_AUTHORIZATION.prompt'), [
+            { text: translate('LOCATION_AUTHORIZATION.yes'), onPress: () => BackgroundGeolocation.showAppSettings() },
+            { text: translate('LOCATION_AUTHORIZATION.no'), onPress: () => false, style: 'cancel' }
           ]), 1000);
       }
     });
