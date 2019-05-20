@@ -18,10 +18,15 @@ export const onIPhoneX = () => {
 
 export const capitalize = text => text.charAt(0).toUpperCase() + text.slice(1);
 
+export const subOrdersGroup = group => Object.entries(group).map(([, value]) => ({
+  ...value,
+  isCollapsed: false,
+}));
+
 export const ordersGroupsToArray = ordersGroups => Object.entries(ordersGroups).map(([key, value]) => ({
   id: key,
   day: translate(`ORDERS.${key}`),
-  groups: value,
+  groups: subOrdersGroup(value),
   isCollapsed: false,
 }));
 

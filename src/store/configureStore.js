@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { Iterable } from 'immutable';
 import { createLogger } from 'redux-logger';
@@ -19,7 +19,12 @@ export default function configureStore(initialState) {
     middlewares.push(logger);
   }
 
-  const store = createStore(AppReducer, initialState, applyMiddleware(...middlewares));
+  const store = createStore(AppReducer, initialState, compose(
+    applyMiddleware(...middlewares),
+    // Uncomment (**) for Seeing Store on debugger after building append
+    // and add comma (,) to previous statement
+    window && __DEV__ && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  ));
 
   return store;
 }

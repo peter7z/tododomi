@@ -493,6 +493,11 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
+"@mauron85/react-native-background-geolocation@^0.5.3":
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/@mauron85/react-native-background-geolocation/-/react-native-background-geolocation-0.5.3.tgz#449a3f02fa2dd89198ad7db812ae95a37a983309"
+  integrity sha512-KzWzA55jWzCodXqHGdeKnw7MOXXsEO/f4+vd9KVicq7oyGLnEHA+t9DcpRd2YEEsFca515TNHmAcvh6vL1B0Kg==
+
 abab@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.4.tgz#5faad9c2c07f60dd76770f71cf025b62a63cfd4e"
@@ -544,6 +549,11 @@ acorn@^5.5.0:
   version "5.7.3"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.7.3.tgz#67aa231bf8812974b85235a96771eb6bd07ea279"
   integrity sha512-T/zvzYRfbVojPWahDsE5evJdHb3oJoQfFbsrKM7w5Zcs++Tr257tia3BmMP8XYVjp1S9RZXQMh7gao96BlqZOw==
+
+actioncable@^5.2.3:
+  version "5.2.3"
+  resolved "https://registry.yarnpkg.com/actioncable/-/actioncable-5.2.3.tgz#639d98855b854b7bfe2059ab97d6e0ae8fd60a1d"
+  integrity sha512-KNdZHRDu92VDSO7SOEJS8Bf5G//LZZLz5e6m7mv8Wjafe9Svdp/DPJ/DpO7rJmPAlKcLAYwi/R7pNJ/VCHV1FQ==
 
 ajv-keywords@^2.1.0:
   version "2.1.1"

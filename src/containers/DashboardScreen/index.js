@@ -1,6 +1,6 @@
 import { array, bool, func, object } from 'prop-types';
 import React from 'react';
-import { ScrollView, View, RefreshControl, Text, TouchableOpacity } from 'react-native';
+import { ScrollView, View, RefreshControl, Text, TouchableOpacity, LayoutAnimation } from 'react-native';
 import { connect } from 'react-redux';
 
 import { getOrders, getCompletedOrders, setOrders, setCompletedOrders } from 'actions/orderActions';
@@ -24,6 +24,7 @@ class DashboardScreen extends React.Component {
   }
 
   onCollapse = (day) => {
+    LayoutAnimation.easeInEaseOut();
     const { completedOrdersGroups, ordersGroups, setOrders, setCompletedOrders } = this.props;
     const { completedTab } = this.state;
     const group = completedTab ? completedOrdersGroups : ordersGroups;
@@ -31,6 +32,17 @@ class DashboardScreen extends React.Component {
     const modifiedOrdersGroups = group.map(ordersGroup =>
       ((ordersGroup.day === day) ? { ...ordersGroup, isCollapsed: !ordersGroup.isCollapsed } : ordersGroup));
     action(modifiedOrdersGroups);
+  }
+
+  onCollapseOrderStatus = (status) => {
+    LayoutAnimation.easeInEaseOut();
+    const { ordersGroups, setOrders } = this.props;
+    const todayOrderGroup = ordersGroups.find((group => group.id === 'today'));
+    const modifiedOrdersGroups = todayOrderGroup.groups.map(group =>
+      ((group.status === status) ? { ...group, isCollapsed: !group.isCollapsed } : group));
+    const modifiedTodayOrderGroup = ordersGroups.map(ordersGroup =>
+      ((ordersGroup.id === 'today') ? { ...ordersGroup, groups: modifiedOrdersGroups } : ordersGroup));
+    setOrders(modifiedTodayOrderGroup);
   }
 
   onEnterGroup = (id, group) => {
@@ -57,16 +69,19 @@ class DashboardScreen extends React.Component {
 
   renderOrders = () => {
     const { ordersGroups, completedOrdersGroups } = this.props;
-    const groups = this.state.completedTab ? completedOrdersGroups : ordersGroups;
-
+    const { completedTab } = this.state;
+    const groups = completedTab ? completedOrdersGroups : ordersGroups;
     return (Boolean(groups.length) ?
       groups.map(({ id, day, groups, isCollapsed }) => (
         <OrdersGroups
           key={id}
+          id={id}
+          completedOrders={completedTab}
           day={day}
           groups={groups}
           isCollapsed={isCollapsed}
           onCollapse={this.onCollapse}
+          onCollapseOrderStatus={this.onCollapseOrderStatus}
           onEnterGroup={group => this.onEnterGroup(id, group)}
         />
       ))
@@ -76,7 +91,6 @@ class DashboardScreen extends React.Component {
   render() {
     const { user: { avatar, fullName }, loading } = this.props;
     const { completedTab } = this.state;
-
     return (
       <View>
         <Header
