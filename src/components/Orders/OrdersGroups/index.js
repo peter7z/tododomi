@@ -4,12 +4,13 @@ import { string, bool, array, func } from 'prop-types';
 
 import TouchableIcon from 'components/Common/TouchableIcon';
 import Chevron, { ChevronDirections } from 'components/Icons/Chevron';
+import { TOMORROW_ID } from 'constants/appConstants';
 import OrderGroup from './OrdersGroup';
 import styles from './styles';
 
 const OrdersGroups = ({ id, day, groups, isCollapsed, onCollapse, onEnterGroup, completedOrders, onCollapseOrderStatus }) => (
   <Fragment>
-    {(completedOrders || id === 'tomorrow') &&
+    {(completedOrders || id === TOMORROW_ID) &&
     <Fragment>
       <View style={styles.header}>
         <Text style={styles.day}>{day}</Text>
@@ -19,7 +20,7 @@ const OrdersGroups = ({ id, day, groups, isCollapsed, onCollapse, onEnterGroup, 
         />
       </View>
       {
-        !isCollapsed && groups.length && groups.map((group) => {
+        !isCollapsed && groups.map((group) => {
           const { shop: { name }, deliveryTime } = group;
           return (
             <OrderGroup
@@ -33,7 +34,7 @@ const OrdersGroups = ({ id, day, groups, isCollapsed, onCollapse, onEnterGroup, 
     </Fragment>
     }
     {
-      !completedOrders && id !== 'tomorrow' && !isCollapsed && groups &&
+      !completedOrders && id !== TOMORROW_ID && !isCollapsed && groups &&
       groups.map(({ ordersGroups, status, isCollapsed: isCollapsedStatus }, index) => (
         <Fragment key={index}>
           <View style={styles.header}>
