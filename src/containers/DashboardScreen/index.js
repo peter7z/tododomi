@@ -45,10 +45,10 @@ class DashboardScreen extends React.Component {
     setOrders(modifiedTodayOrderGroup);
   }
 
-  onEnterGroup = (id, group) => {
+  onEnterGroup = (id, group, orderStatus) => {
     this.props.navigator.push({
       screen: ORDERS_GROUP_SCREEN,
-      passProps: { id, group, disabled: id !== TODAY_ID }
+      passProps: { id, group, orderStatus, disabled: id !== TODAY_ID }
     });
   }
 
@@ -82,7 +82,7 @@ class DashboardScreen extends React.Component {
           isCollapsed={isCollapsed}
           onCollapse={this.onCollapse}
           onCollapseOrderStatus={this.onCollapseOrderStatus}
-          onEnterGroup={group => this.onEnterGroup(id, group)}
+          onEnterGroup={this.onEnterGroup}
         />
       ))
       : <OrdersEmptyState />);

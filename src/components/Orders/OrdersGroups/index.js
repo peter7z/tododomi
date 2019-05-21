@@ -51,7 +51,7 @@ const OrdersGroups = ({ id, day, groups, isCollapsed, onCollapse, onEnterGroup, 
                 <OrderGroup
                   key={`${name}-${deliveryTime}`}
                   group={group}
-                  onEnterGroup={onEnterGroup}
+                  onEnterGroup={() => onEnterGroup(id, group, status)}
                 />
               );
             })

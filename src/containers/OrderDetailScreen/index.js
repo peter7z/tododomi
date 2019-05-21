@@ -46,8 +46,8 @@ class OrderDetailScreen extends Component {
 
   onChangeOrderStatus = (delivered, notDeliveredReasons) => {
     const { order: { id: orderId } } = this.props;
-    const { id, group, setOrderStatus } = this.props;
-    setOrderStatus(id, group, orderId, delivered, notDeliveredReasons);
+    const { id, group, setOrderStatus, orderStatus } = this.props;
+    setOrderStatus(id, group, orderId, orderStatus, delivered, notDeliveredReasons);
     !delivered && this.onCloseModal();
     this.onBack();
   }
@@ -112,7 +112,8 @@ OrderDetailScreen.propTypes = {
   getOrder: func.isRequired,
   setOrderStatus: func.isRequired,
   loading: bool.isRequired,
-  disabled: bool
+  disabled: bool,
+  orderStatus: string.isRequired,
 };
 
 const mapState = state => ({
@@ -121,10 +122,9 @@ const mapState = state => ({
   currentOrder: state.getIn(['orders', 'currentOrder']).toJS()
 });
 
-const mapDispatch = dispatch => ({
-  getOrder: id => dispatch(getOrder(id)),
-  setOrderStatus: (id, group, orderId, delivered, notDeliveredReasons) =>
-    dispatch(setOrderStatus(id, group, orderId, delivered, notDeliveredReasons)),
+const mapDispatch = ({
+  getOrder,
+  setOrderStatus,
 });
 
 export default connect(mapState, mapDispatch)(OrderDetailScreen);

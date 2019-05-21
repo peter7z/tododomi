@@ -14,8 +14,8 @@ class Order {
     return api.get(applyQueryParams('/deliverers/orders/range', { ordersGroupId }));
   }
 
-  static startOrdersGroup(orderIds) {
-    return api.put(applyQueryParams('/deliverers/orders/start_delivery', { orderIds }));
+  static startOrdersGroup(ordersGroupId) {
+    return api.put(applyQueryParams('/deliverers/orders/start_delivery', { ordersGroupId }));
   }
 
   static setOrderStatus(id, delivered, notDeliveredReasons) {
