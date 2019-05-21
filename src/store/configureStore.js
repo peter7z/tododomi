@@ -23,7 +23,7 @@ export default function configureStore(initialState) {
     applyMiddleware(...middlewares),
     // Uncomment (**) for Seeing Store on debugger after building append
     // and add comma (,) to previous statement
-    window && __DEV__ && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    // window && __DEV__ && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   ));
 
   return store;
