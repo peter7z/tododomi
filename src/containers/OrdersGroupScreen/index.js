@@ -10,7 +10,7 @@ import OrdersRow from 'components/Orders/OrdersRow';
 import ChangeOrderStatusDialog from 'components/Orders/ChangeOrderStatusDialog';
 import ReportLocation from 'utils/ReportLocation';
 import { getOrdersGroup, startOrdersGroup, setOrderStatus } from 'actions/orderActions';
-import { ORDER_DETAIL_SCREEN, NOT_DELIVERED_REASONS_MODAL_SCREEN } from '../../screens';
+import { ORDER_DETAIL_SCREEN, NOT_DELIVERED_REASONS_MODAL_SCREEN, DASHBOARD_SCREEN } from '../../screens';
 import styles from './styles';
 
 class OrdersGroupScreen extends React.Component {
@@ -32,7 +32,10 @@ class OrdersGroupScreen extends React.Component {
   }
 
   onBack = () => {
-    this.props.navigator.pop();
+    const { navigator } = this.props;
+    navigator.resetTo({
+      screen: DASHBOARD_SCREEN,
+    });
   }
 
   onCloseModal = () => {
@@ -54,15 +57,15 @@ class OrdersGroupScreen extends React.Component {
   }
 
   onGroupStart = () => {
-    const { id, startGroup, group } = this.props;
-    startGroup(id, group, group.orderIds);
+    const { id, startGroup, group, orderStatus } = this.props;
+    startGroup(id, group, group.ordersGroupId, orderStatus);
   }
 
   onEnterOrder = (group, order) => {
-    const { id, navigator, disabled } = this.props;
+    const { id, navigator, disabled, orderStatus } = this.props;
     navigator.push({
       screen: ORDER_DETAIL_SCREEN,
-      passProps: { id, group, order, disabled }
+      passProps: { id, group, order, orderStatus, disabled }
     });
   }
 
@@ -76,8 +79,8 @@ class OrdersGroupScreen extends React.Component {
       this.setState(
         { changingId: currentOrderId },
         async () => {
-          const { id, group, setOrderStatus } = this.props;
-          await setOrderStatus(id, group, currentOrderId, delivered, notDeliveredReasons);
+          const { id, group, setOrderStatus, orderStatus } = this.props;
+          await setOrderStatus(id, group, currentOrderId, orderStatus, delivered, notDeliveredReasons);
           this.setState(
             {
               changingId: 0,
@@ -178,6 +181,7 @@ OrdersGroupScreen.propTypes = {
   setOrderStatus: func.isRequired,
   statusLoading: bool.isRequired,
   disabled: bool.isRequired,
+  orderStatus: string.isRequired,
 };
 
 const mapState = state => ({
@@ -188,11 +192,10 @@ const mapState = state => ({
   uid: state.getIn(['session', 'user', 'uid']),
 });
 
-const mapDispatch = dispatch => ({
-  getOrdersGroup: orderIds => dispatch(getOrdersGroup(orderIds)),
-  startGroup: (id, group, orderIds) => dispatch(startOrdersGroup(id, group, orderIds)),
-  setOrderStatus: (id, group, orderId, delivered, notDeliveredReasons) =>
-    dispatch(setOrderStatus(id, group, orderId, delivered, notDeliveredReasons)),
+const mapDispatch = ({
+  getOrdersGroup,
+  startGroup: startOrdersGroup,
+  setOrderStatus,
 });
 
 export default connect(mapState, mapDispatch)(OrdersGroupScreen);

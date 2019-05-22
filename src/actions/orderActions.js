@@ -65,10 +65,11 @@ export const startUserOrdersGroup = () => ({
   type: types.START_ORDERS_GROUP
 });
 
-export const startOrdersGroupSuccess = (id, group) => ({
+export const startOrdersGroupSuccess = (id, group, orderStatus) => ({
   type: types.START_ORDERS_GROUP_SUCCESS,
   id,
   group,
+  orderStatus,
 });
 
 export const startOrdersGroupFail = errors => ({
@@ -80,11 +81,12 @@ export const setUserOrderStatus = () => ({
   type: types.SET_ORDER_STATUS
 });
 
-export const setOrderStatusSuccess = (id, group, orderId, delivered) => ({
+export const setOrderStatusSuccess = (id, group, orderId, orderStatus, delivered) => ({
   type: types.SET_ORDER_STATUS_SUCCESS,
   id,
   group,
   orderId,
+  orderStatus,
   delivered,
 });
 
@@ -126,34 +128,34 @@ export const getCompletedOrders = () =>
     }
   };
 
-export const getOrdersGroup = orderIds =>
+export const getOrdersGroup = ordersGroupId =>
   async (dispatch) => {
     dispatch(getUserOrdersGroup());
     try {
-      const { readyToDeliver, orders } = await ordersApi.getOrdersGroup(orderIds);
+      const { readyToDeliver, orders } = await ordersApi.getOrdersGroup(ordersGroupId);
       dispatch(getOrdersGroupSuccess({ readyToDeliver, orders }));
     } catch (errors) {
       dispatch(getOrdersGroupFail(errors));
     }
   };
 
-export const startOrdersGroup = (id, group, orderIds) =>
+export const startOrdersGroup = (id, group, ordersGroupId, orderStatus) =>
   async (dispatch) => {
     dispatch(startUserOrdersGroup());
     try {
-      await ordersApi.startOrdersGroup(orderIds);
-      dispatch(startOrdersGroupSuccess(id, group));
+      await ordersApi.startOrdersGroup(ordersGroupId);
+      dispatch(startOrdersGroupSuccess(id, group, orderStatus));
     } catch (errors) {
       dispatch(startOrdersGroupFail(errors));
     }
   };
 
-export const setOrderStatus = (id, group, orderId, delivered, notDeliveredReasons) =>
+export const setOrderStatus = (id, group, orderId, orderStatus, delivered, notDeliveredReasons) =>
   async (dispatch) => {
     dispatch(setUserOrderStatus());
     try {
       await ordersApi.setOrderStatus(orderId, delivered, notDeliveredReasons);
-      dispatch(setOrderStatusSuccess(id, group, orderId, delivered));
+      dispatch(setOrderStatusSuccess(id, group, orderId, orderStatus, delivered));
     } catch (errors) {
       dispatch(setOrderStatusFail(errors));
     }

@@ -7,6 +7,7 @@ import TouchableIcon from 'components/Common/TouchableIcon';
 import Chevron, { ChevronDirections } from 'components/Icons/Chevron';
 import { StopIcon } from 'components/Icons';
 import { greyColor } from 'constants/styleConstants';
+import { ORDER_ACTIVE_STATUS } from 'constants/appConstants';
 import styles from './styles';
 
 const OrdersGroup = ({
@@ -27,7 +28,7 @@ const OrdersGroup = ({
         <Text style={styles.count}>{completedOrdersCount}/{ordersCount}</Text>
       </View>
     </View>
-    {active
+    {active === ORDER_ACTIVE_STATUS
       ? (
         <TouchableOpacity onPress={() => onEnterGroup(group)} style={styles.active}>
           <Text style={styles.activeText}>{translate('ORDERS.active')}</Text>
