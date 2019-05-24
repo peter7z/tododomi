@@ -26,7 +26,7 @@ const OrdersGroups = ({ id, day, groups, isCollapsed, onCollapse, onEnterGroup, 
             <OrderGroup
               key={`${name}-${deliveryTime}`}
               group={group}
-              onEnterGroup={onEnterGroup}
+              onEnterGroup={() => onEnterGroup(id, group)}
             />
           );
         })
@@ -41,7 +41,7 @@ const OrdersGroups = ({ id, day, groups, isCollapsed, onCollapse, onEnterGroup, 
             <Text style={styles.day}>{status}</Text>
             <TouchableIcon
               onPress={() => onCollapseOrderStatus(status)}
-              icon={<Chevron direction={isCollapsedStatus ? ChevronDirections.UP : ChevronDirections.DOWN} />}
+              icon={<Chevron direction={isCollapsedStatus ? ChevronDirections.DOWN : ChevronDirections.UP} />}
             />
           </View>
           {

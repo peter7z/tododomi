@@ -116,10 +116,8 @@ class OrdersGroupScreen extends React.Component {
       disabled,
     } = this.props;
     const { changingId, showConfirmDialog } = this.state;
-
     return (
       <View>
-
         <OrdersHeader onBack={this.onBack} group={group} />
         <ScrollView style={styles.scroll}>
           <Text style={styles.title}>{translate('ORDERS_GROUP.stops')}</Text>
@@ -181,7 +179,7 @@ OrdersGroupScreen.propTypes = {
   setOrderStatus: func.isRequired,
   statusLoading: bool.isRequired,
   disabled: bool.isRequired,
-  orderStatus: string.isRequired,
+  orderStatus: string,
 };
 
 const mapState = state => ({
