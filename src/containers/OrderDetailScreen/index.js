@@ -113,7 +113,7 @@ OrderDetailScreen.propTypes = {
   setOrderStatus: func.isRequired,
   loading: bool.isRequired,
   disabled: bool,
-  orderStatus: string.isRequired,
+  orderStatus: string,
 };
 
 const mapState = state => ({

@@ -46,9 +46,10 @@ class DashboardScreen extends React.Component {
   }
 
   onEnterGroup = (id, group, orderStatus) => {
+    const { completedTab } = this.state;
     this.props.navigator.push({
       screen: ORDERS_GROUP_SCREEN,
-      passProps: { id, group, orderStatus, disabled: id !== TODAY_ID }
+      passProps: { id, group, orderStatus, disabled: (id !== TODAY_ID) || completedTab }
     });
   }
 
