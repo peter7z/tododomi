@@ -9,7 +9,7 @@ import Header from 'components/Common/Header';
 import OrdersEmptyState from 'components/Orders/OrdersEmptyState';
 import OrdersGroups from 'components/Orders/OrdersGroups';
 import translate from 'utils/i18n';
-import { TODAY_ID } from 'constants/appConstants';
+import { ORDER_FINISHED_STATUS, ORDER_INACTIVE_STATUS, TODAY_ID } from 'constants/appConstants';
 import { whiteColor, secondaryButtonTextColor, secondaryColor } from 'constants/styleConstants';
 import { PROFILE_SCREEN, ORDERS_GROUP_SCREEN } from '../../screens';
 import { styles, headerHeight, scrollheight } from './styles';
@@ -17,7 +17,7 @@ import { styles, headerHeight, scrollheight } from './styles';
 class DashboardScreen extends React.Component {
   state = { completedTab: false }
 
-  componentDidMount = () => {
+  componentDidMount() {
     const { getOrders, getCompletedOrders } = this.props;
     getOrders();
     getCompletedOrders();
@@ -37,19 +37,23 @@ class DashboardScreen extends React.Component {
   onCollapseOrderStatus = (status) => {
     LayoutAnimation.easeInEaseOut();
     const { ordersGroups, setOrders } = this.props;
-    const todayOrderGroup = ordersGroups.find((group => group.id === 'today'));
+    const todayOrderGroup = ordersGroups.find((group => group.id === TODAY_ID));
     const modifiedOrdersGroups = todayOrderGroup.groups.map(group =>
       ((group.status === status) ? { ...group, isCollapsed: !group.isCollapsed } : group));
     const modifiedTodayOrderGroup = ordersGroups.map(ordersGroup =>
-      ((ordersGroup.id === 'today') ? { ...ordersGroup, groups: modifiedOrdersGroups } : ordersGroup));
+      ((ordersGroup.id === TODAY_ID) ? { ...ordersGroup, groups: modifiedOrdersGroups } : ordersGroup));
     setOrders(modifiedTodayOrderGroup);
   }
 
   onEnterGroup = (id, group, orderStatus) => {
-    const { completedTab } = this.state;
     this.props.navigator.push({
       screen: ORDERS_GROUP_SCREEN,
-      passProps: { id, group, orderStatus, disabled: (id !== TODAY_ID) || completedTab }
+      passProps: {
+        id,
+        group,
+        orderStatus,
+        disabled: (group.active === ORDER_INACTIVE_STATUS) || (ORDER_FINISHED_STATUS),
+      }
     });
   }
 
@@ -161,11 +165,11 @@ const mapState = state => ({
   completedOrdersGroups: state.getIn(['orders', 'completedOrdersGroups']).toJS(),
 });
 
-const mapDispatch = dispatch => ({
-  getOrders: () => dispatch(getOrders()),
-  getCompletedOrders: () => dispatch(getCompletedOrders()),
-  setOrders: ordersGroups => dispatch(setOrders(ordersGroups)),
-  setCompletedOrders: ordersGroups => dispatch(setCompletedOrders(ordersGroups)),
+const mapDispatch = ({
+  getOrders,
+  getCompletedOrders,
+  setOrders,
+  setCompletedOrders,
 });
 
 export default connect(mapState, mapDispatch)(DashboardScreen);

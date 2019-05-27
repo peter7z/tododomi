@@ -4,3 +4,5 @@ export const ANDROID_GOOGLE_MAPS = 'https://google.com/maps?travelmode=driving&d
 export const TODAY_ID = 'today';
 export const TOMORROW_ID = 'tomorrow';
 export const ORDER_ACTIVE_STATUS = 'active';
+export const ORDER_INACTIVE_STATUS = 'inactive';
+export const ORDER_FINISHED_STATUS = 'finished';
