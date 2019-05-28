@@ -107,6 +107,7 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
+        multiDexEnabled true
     }
     signingConfigs {
         release {
@@ -144,6 +145,14 @@ android {
                 output.versionCodeOverride =
                         versionCodes.get(abi) * 1048576 + defaultConfig.versionCode
             }
+        }
+    }
+
+    configurations.all {
+        resolutionStrategy {
+            force 'com.android.support:design:26.0.1'
+            force 'com.android.support:support-v4:26.0.1'
+            force 'com.android.support:appcompat-v7:26.0.1'
         }
     }
 }
