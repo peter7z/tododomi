@@ -52,7 +52,7 @@ class DashboardScreen extends React.Component {
         id,
         group,
         orderStatus,
-        disabled: (group.active === ORDER_INACTIVE_STATUS) || (ORDER_FINISHED_STATUS),
+        disabled: (group.active === ORDER_INACTIVE_STATUS) || (group.active === ORDER_FINISHED_STATUS),
       }
     });
   }
