@@ -7,6 +7,7 @@ import com.facebook.react.ReactPackage;
 import com.horcrux.svg.SvgPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.marianhello.bgloc.react.BackgroundGeolocationPackage;
+import com.geektime.rnonesignalandroid.ReactNativeOneSignalPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,7 +25,8 @@ public class MainApplication extends NavigationApplication {
             new ReactNativeConfigPackage(),
             new SvgPackage(),
             new SplashScreenReactPackage(),
-            new BackgroundGeolocationPackage()
+            new BackgroundGeolocationPackage(),
+            new ReactNativeOneSignalPackage()
         );
     }
 
