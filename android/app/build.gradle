@@ -107,6 +107,8 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
+        manifestPlaceholders = [onesignal_app_id: project.env.get('ONESIGNAL_APP_ID'),
+                                onesignal_google_project_number: "REMOTE"]
         multiDexEnabled true
     }
     signingConfigs {
@@ -158,6 +160,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-onesignal')
     compile project(':@mauron85/react-native-background-geolocation')
     compile project(':react-native-splash-screen')
     compile project(':react-native-i18n')

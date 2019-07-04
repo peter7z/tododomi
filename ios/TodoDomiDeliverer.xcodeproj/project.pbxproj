@@ -45,6 +45,12 @@
 		47B3E9462C5E44D6B4E88E13 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA39C219A22498A92F89D16 /* libReactNativeNavigation.a */; };
 		56A96B07D9CC596923070D35 /* libPods-TodoDomiDeliverer-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF4F70B09757BCD641926E29 /* libPods-TodoDomiDeliverer-tvOSTests.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		69FCD6E122CE5CEB00BE8A46 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FCD6E022CE5CEB00BE8A46 /* NotificationService.m */; };
+		69FCD6E522CE5CEB00BE8A46 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 69FCD6DD22CE5CEB00BE8A46 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		69FCD6EB22CE5D5100BE8A46 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69FCD6EA22CE5D5100BE8A46 /* UIKit.framework */; };
+		69FCD6ED22CE5D5C00BE8A46 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69FCD6EC22CE5D5C00BE8A46 /* SystemConfiguration.framework */; };
+		69FCD6EE22CE5D6500BE8A46 /* libRCTOneSignal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69FCD6B722CE407A00BE8A46 /* libRCTOneSignal.a */; };
+		69FCD72C22CE6ADE00BE8A46 /* libRCTOneSignal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69FCD6B722CE407A00BE8A46 /* libRCTOneSignal.a */; };
 		6F9A7B7D3E0B12EE97029022 /* libPods-TodoDomiDelivererTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD2248AAA50DBF977BEE050F /* libPods-TodoDomiDelivererTests.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
@@ -144,13 +150,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 3DBE0D0D1F3B181C0099AA32;
 			remoteInfo = "fishhook-tvOS";
-		};
-		2D1BE96C2254FBEB00CD0FEC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3CED69A8282F405494BC9867 /* ReactNativeConfig.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3DF7F6AC203AA09B00D0EAB7;
-			remoteInfo = "ReactNativeConfig-tvOS";
 		};
 		2D1BE9782254FBEB00CD0FEC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -369,6 +368,20 @@
 			remoteGlobalIDString = 2D2A28201D9B03D100D4039D;
 			remoteInfo = "RCTAnimation-tvOS";
 		};
+		69FCD6B622CE407A00BE8A46 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 69FCD6A522CE407800BE8A46 /* RCTOneSignal.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3245CDED1BFEE35C00EABF68;
+			remoteInfo = RCTOneSignal;
+		};
+		69FCD6E322CE5CEB00BE8A46 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 69FCD6DC22CE5CEB00BE8A46;
+			remoteInfo = OneSignalNotificationServiceExtension;
+		};
 		78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
@@ -391,6 +404,20 @@
 			remoteInfo = RCTBlob;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		69FCD6E922CE5CEB00BE8A46 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				69FCD6E522CE5CEB00BE8A46 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
@@ -426,6 +453,14 @@
 		555B51D6D6A44364A0EDCDBA /* Roboto-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Regular.ttf"; path = "../src/assets/fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		5DBBB0DD0A5B442BB3264A50 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Medium.ttf"; path = "../src/assets/fonts/Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
+		69FCD6A522CE407800BE8A46 /* RCTOneSignal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTOneSignal.xcodeproj; path = "../node_modules/react-native-onesignal/ios/RCTOneSignal.xcodeproj"; sourceTree = "<group>"; };
+		69FCD6D822CE5B7D00BE8A46 /* TodoDomiDeliverer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = TodoDomiDeliverer.entitlements; path = TodoDomiDeliverer/TodoDomiDeliverer.entitlements; sourceTree = "<group>"; };
+		69FCD6DD22CE5CEB00BE8A46 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		69FCD6DF22CE5CEB00BE8A46 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
+		69FCD6E022CE5CEB00BE8A46 /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
+		69FCD6E222CE5CEB00BE8A46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		69FCD6EA22CE5D5100BE8A46 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		69FCD6EC22CE5D5C00BE8A46 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		758ABA5BEAB9E80616055BEA /* Pods-TodoDomiDelivererTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoDomiDelivererTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodoDomiDelivererTests/Pods-TodoDomiDelivererTests.debug.xcconfig"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
@@ -459,6 +494,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69FCD72C22CE6ADE00BE8A46 /* libRCTOneSignal.a in Frameworks */,
 				2D95D213219C6DFF00DB93C2 /* libRNSVG.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
@@ -504,6 +540,16 @@
 			files = (
 				2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */,
 				56A96B07D9CC596923070D35 /* libPods-TodoDomiDeliverer-tvOSTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		69FCD6DA22CE5CEB00BE8A46 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69FCD6EE22CE5D6500BE8A46 /* libRCTOneSignal.a in Frameworks */,
+				69FCD6ED22CE5D5C00BE8A46 /* SystemConfiguration.framework in Frameworks */,
+				69FCD6EB22CE5D5100BE8A46 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,6 +638,7 @@
 		13B07FAE1A68108700A75B9A /* TodoDomiDeliverer */ = {
 			isa = PBXGroup;
 			children = (
+				69FCD6D822CE5B7D00BE8A46 /* TodoDomiDeliverer.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -629,6 +676,8 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				69FCD6EC22CE5D5C00BE8A46 /* SystemConfiguration.framework */,
+				69FCD6EA22CE5D5100BE8A46 /* UIKit.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
 				8CB9D914A57CB5325F888966 /* libPods-TodoDomiDeliverer.a */,
 				DF4F70B09757BCD641926E29 /* libPods-TodoDomiDeliverer-tvOSTests.a */,
@@ -696,7 +745,6 @@
 			isa = PBXGroup;
 			children = (
 				55D359992092278400786105 /* libReactNativeConfig.a */,
-				2D1BE96D2254FBEB00CD0FEC /* libReactNativeConfig-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -708,6 +756,24 @@
 				5E9157351DD0AC6500FF2AA8 /* libRCTAnimation.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		69FCD6A622CE407800BE8A46 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				69FCD6B722CE407A00BE8A46 /* libRCTOneSignal.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		69FCD6DE22CE5CEB00BE8A46 /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				69FCD6DF22CE5CEB00BE8A46 /* NotificationService.h */,
+				69FCD6E022CE5CEB00BE8A46 /* NotificationService.m */,
+				69FCD6E222CE5CEB00BE8A46 /* Info.plist */,
+			);
+			path = OneSignalNotificationServiceExtension;
 			sourceTree = "<group>";
 		};
 		78C398B11ACF4ADC00677621 /* Products */ = {
@@ -722,6 +788,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				69FCD6A522CE407800BE8A46 /* RCTOneSignal.xcodeproj */,
 				2D95D20A219C6DC200DB93C2 /* RNSVG.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -759,6 +826,7 @@
 				13B07FAE1A68108700A75B9A /* TodoDomiDeliverer */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* TodoDomiDelivererTests */,
+				69FCD6DE22CE5CEB00BE8A46 /* OneSignalNotificationServiceExtension */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				55D3596A2092278200786105 /* Recovered References */,
@@ -777,6 +845,7 @@
 				00E356EE1AD99517003FC87E /* TodoDomiDelivererTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* TodoDomiDeliverer-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* TodoDomiDeliverer-tvOSTests.xctest */,
+				69FCD6DD22CE5CEB00BE8A46 /* OneSignalNotificationServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -845,10 +914,12 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				0835710021A451B2008133A5 /* ShellScript */,
+				69FCD6E922CE5CEB00BE8A46 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				69FCD6E422CE5CEB00BE8A46 /* PBXTargetDependency */,
 			);
 			name = TodoDomiDeliverer;
 			productName = "Hello World";
@@ -892,12 +963,30 @@
 			productReference = 2D02E4901E0B4A5D006451C7 /* TodoDomiDeliverer-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		69FCD6DC22CE5CEB00BE8A46 /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 69FCD6E622CE5CEB00BE8A46 /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
+			buildPhases = (
+				69FCD6D922CE5CEB00BE8A46 /* Sources */,
+				69FCD6DA22CE5CEB00BE8A46 /* Frameworks */,
+				69FCD6DB22CE5CEB00BE8A46 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OneSignalNotificationServiceExtension;
+			productName = OneSignalNotificationServiceExtension;
+			productReference = 69FCD6DD22CE5CEB00BE8A46 /* OneSignalNotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				DefaultBuildSystemTypeForWorkspace = Original;
 				LastUpgradeCheck = 610;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
@@ -909,6 +998,11 @@
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = WNU857N39T;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -918,6 +1012,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2D02E47A1E0B4A5D006451C7;
+					};
+					69FCD6DC22CE5CEB00BE8A46 = {
+						CreatedOnToolsVersion = 10.2.1;
+						DevelopmentTeam = WNU857N39T;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -967,6 +1066,10 @@
 					ProjectRef = 00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */;
 				},
 				{
+					ProductGroup = 69FCD6A622CE407800BE8A46 /* Products */;
+					ProjectRef = 69FCD6A522CE407800BE8A46 /* RCTOneSignal.xcodeproj */;
+				},
+				{
 					ProductGroup = 139105B71AF99BAD00B5F7CC /* Products */;
 					ProjectRef = 139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */;
 				},
@@ -1013,6 +1116,7 @@
 				00E356ED1AD99517003FC87E /* TodoDomiDelivererTests */,
 				2D02E47A1E0B4A5D006451C7 /* TodoDomiDeliverer-tvOS */,
 				2D02E48F1E0B4A5D006451C7 /* TodoDomiDeliverer-tvOSTests */,
+				69FCD6DC22CE5CEB00BE8A46 /* OneSignalNotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -1093,13 +1197,6 @@
 			fileType = archive.ar;
 			path = "libfishhook-tvOS.a";
 			remoteRef = 2D16E6851FA4F8DC00B85C8A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2D1BE96D2254FBEB00CD0FEC /* libReactNativeConfig-tvOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libReactNativeConfig-tvOS.a";
-			remoteRef = 2D1BE96C2254FBEB00CD0FEC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		2D1BE9792254FBEB00CD0FEC /* libRCTBackgroundGeolocation.a */ = {
@@ -1319,6 +1416,13 @@
 			remoteRef = 5E9157341DD0AC6500FF2AA8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		69FCD6B722CE407A00BE8A46 /* libRCTOneSignal.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTOneSignal.a;
+			remoteRef = 69FCD6B622CE407A00BE8A46 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		78C398B91ACF4ADC00677621 /* libRCTLinking.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1371,6 +1475,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2D02E48E1E0B4A5D006451C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		69FCD6DB22CE5CEB00BE8A46 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1529,6 +1640,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		69FCD6D922CE5CEB00BE8A46 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69FCD6E122CE5CEB00BE8A46 /* NotificationService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1541,6 +1660,11 @@
 			isa = PBXTargetDependency;
 			target = 2D02E47A1E0B4A5D006451C7 /* TodoDomiDeliverer-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
+		};
+		69FCD6E422CE5CEB00BE8A46 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 69FCD6DC22CE5CEB00BE8A46 /* OneSignalNotificationServiceExtension */;
+			targetProxy = 69FCD6E322CE5CEB00BE8A46 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1637,6 +1761,7 @@
 			baseConfigurationReference = A1DA4AF8F4823AB830E6C173 /* Pods-TodoDomiDeliverer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TodoDomiDeliverer/TodoDomiDeliverer.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1649,6 +1774,7 @@
 					"$(SRCROOT)/../node_modules/react-native-i18n/ios",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/@mauron85/react-native-background-geolocation/ios/RCTBackgroundGeolocation/**",
+					"$(SRCROOT)/../node_modules/react-native-onesignal/ios/**",
 				);
 				INFOPLIST_FILE = TodoDomiDeliverer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1669,6 +1795,7 @@
 			baseConfigurationReference = E9DE29839126E5AF05813847 /* Pods-TodoDomiDeliverer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TodoDomiDeliverer/TodoDomiDeliverer.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1680,6 +1807,7 @@
 					"$(SRCROOT)/../node_modules/react-native-i18n/ios",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/@mauron85/react-native-background-geolocation/ios/RCTBackgroundGeolocation/**",
+					"$(SRCROOT)/../node_modules/react-native-onesignal/ios/**",
 				);
 				INFOPLIST_FILE = TodoDomiDeliverer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1867,6 +1995,83 @@
 			};
 			name = Release;
 		};
+		69FCD6E722CE5CEB00BE8A46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = WNU857N39T;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-onesignal/ios/**";
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tododomi.rsdeliverer.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		69FCD6E822CE5CEB00BE8A46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = WNU857N39T;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-onesignal/ios/**";
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tododomi.rsdeliverer.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		83CBBA201A601CBA00E9B192 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1978,6 +2183,15 @@
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
 				2D02E49A1E0B4A5E006451C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		69FCD6E622CE5CEB00BE8A46 /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				69FCD6E722CE5CEB00BE8A46 /* Debug */,
+				69FCD6E822CE5CEB00BE8A46 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
