@@ -10,7 +10,7 @@ import OrdersRow from 'components/Orders/OrdersRow';
 import ChangeOrderStatusDialog from 'components/Orders/ChangeOrderStatusDialog';
 import ReportLocation from 'utils/ReportLocation';
 import { getOrdersGroup, startOrdersGroup, setOrderStatus } from 'actions/orderActions';
-import { ORDER_DETAIL_SCREEN, NOT_DELIVERED_REASONS_MODAL_SCREEN, DASHBOARD_SCREEN } from '../../screens';
+import { ORDER_DETAIL_SCREEN, NOT_DELIVERED_REASONS_MODAL_SCREEN, DASHBOARD_SCREEN } from 'constants/screenConstants';
 import styles from './styles';
 
 class OrdersGroupScreen extends React.Component {

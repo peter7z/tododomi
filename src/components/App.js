@@ -1,11 +1,10 @@
-import { Navigation } from 'react-native-navigation';
 import { Provider } from 'react-redux';
 import Immutable from 'immutable';
 import { sessionService } from 'redux-react-native-session';
-import SplashScreen from 'react-native-splash-screen';
-
+import { startApp, handleDeepLink } from 'utils/startAppHelper';
+import { initNotifications } from 'utils/notifications';
 import configureStore from 'store/configureStore';
-import registerScreens, { DASHBOARD_SCREEN, LOGIN_SCREEN } from '../screens';
+import registerScreens from '../screens';
 
 const store = configureStore(Immutable.Map());
 registerScreens(store, Provider);
@@ -16,8 +15,17 @@ class App {
     this.authenticated = false;
     sessionService.initSessionService(store);
 
+    initNotifications(this.onNotificationOpened);
+
     store.subscribe(this.onStoreUpdate.bind(this));
   }
+
+  onNotificationOpened = (event) => {
+    const session = store.getState().get('session');
+    const authenticated = session.get('authenticated');
+    const user = session.get('user');
+    handleDeepLink(event, { authenticated, user });
+  };
 
   onStoreUpdate() {
     const session = store.getState().get('session');
@@ -29,34 +37,12 @@ class App {
       if (checked) {
         this.appInitialized = true;
         this.authenticated = authenticated;
-        this.startApp(authenticated);
+        startApp(authenticated);
       }
     } else if (shouldUpdate) {
       this.authenticated = authenticated;
-      this.startApp(authenticated);
+      startApp(authenticated);
     }
-  }
-
-  startAuthenticatedApp() {
-    Navigation.startSingleScreenApp({
-      screen: {
-        screen: DASHBOARD_SCREEN
-      }
-    });
-  }
-
-  startApp(authenticated) {
-    if (authenticated) {
-      this.startAuthenticatedApp();
-    } else {
-      Navigation.startSingleScreenApp({
-        screen: {
-          screen: LOGIN_SCREEN
-        }
-      });
-    }
-
-    SplashScreen.hide();
   }
 }
 

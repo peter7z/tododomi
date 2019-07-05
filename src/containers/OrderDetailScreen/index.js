@@ -7,7 +7,7 @@ import ProductList from 'components/Product/ProductList';
 import { getOrder, setOrderStatus } from 'actions/orderActions';
 import OrdersDetailHeader from 'components/Orders/OrdersDetailHeader';
 import OrdersDetailFooter from 'components/Orders/OrdersDetailFooter';
-import { NOT_DELIVERED_REASONS_MODAL_SCREEN } from '../../screens';
+import { NOT_DELIVERED_REASONS_MODAL_SCREEN } from 'constants/screenConstants';
 
 import {
   headerHeight,
