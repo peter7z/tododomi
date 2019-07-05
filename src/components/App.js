@@ -15,13 +15,10 @@ class App {
     this.authenticated = false;
     sessionService.initSessionService(store);
 
-    initNotifications(this.onNotificationReceived, this.onNotificationOpened);
+    initNotifications(this.onNotificationOpened);
 
     store.subscribe(this.onStoreUpdate.bind(this));
   }
-
-  onNotificationReceived = () => {
-  };
 
   onNotificationOpened = (event) => {
     const session = store.getState().get('session');
