@@ -11,7 +11,7 @@ import OrdersGroups from 'components/Orders/OrdersGroups';
 import translate from 'utils/i18n';
 import { ORDER_FINISHED_STATUS, ORDER_INACTIVE_STATUS, TODAY_ID } from 'constants/appConstants';
 import { whiteColor, secondaryButtonTextColor, secondaryColor } from 'constants/styleConstants';
-import { PROFILE_SCREEN, ORDERS_GROUP_SCREEN } from '../../screens';
+import { PROFILE_SCREEN, ORDERS_GROUP_SCREEN } from 'constants/screenConstants';
 import { styles, headerHeight, scrollheight } from './styles';
 
 class DashboardScreen extends React.Component {

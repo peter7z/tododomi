@@ -7,7 +7,7 @@ import { logout } from 'actions/userActions';
 import ProfileHeader from 'components/Profile/ProfileHeader';
 import ProfileSubHeader from 'components/Profile/ProfileSubHeader';
 import ProfileContent from 'components/Profile/ProfileContent';
-import { CHANGE_PASSWORD_SCREEN } from '../../screens';
+import { CHANGE_PASSWORD_SCREEN } from 'constants/screenConstants';
 import styles from './styles';
 
 class ProfileScreen extends React.Component {
