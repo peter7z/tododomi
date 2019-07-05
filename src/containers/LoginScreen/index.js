@@ -12,14 +12,14 @@ import styles from './styles';
 
 class LoginScreen extends PureComponent {
   login = ({ email, password }) => {
-    debugger;
+    const { login } = this.props;
     const notificationPlayerId = getNotificationPlayerId();
-    const consumer = {
+    const deliverer = {
       email,
       password,
       pushToken: notificationPlayerId,
     };
-    login(consumer);
+    login(deliverer);
   };
 
   render() {

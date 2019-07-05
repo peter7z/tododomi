@@ -10,7 +10,6 @@ export const onIds = (device) => {
 };
 
 export const initNotifications = (onReceived, onOpened) => {
-  debugger;
   OneSignal.setLogLevel(6, 0);
 
   OneSignal.setRequiresUserPrivacyConsent(false);
