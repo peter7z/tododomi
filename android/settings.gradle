@@ -1,6 +1,8 @@
 rootProject.name = 'TodoDomiDeliverer'
 include ':react-native-onesignal'
 project(':react-native-onesignal').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-onesignal/android')
+include ':@react-native-community/async-storage'
+project(':@react-native-community/async-storage').projectDir = new File(rootProject.projectDir, '../node_modules/@react-native-community/async-storage/android')
 include ':@mauron85_react-native-background-geolocation-common'
 project(':@mauron85_react-native-background-geolocation-common').projectDir = new File(rootProject.projectDir, '../node_modules/@mauron85/react-native-background-geolocation/android/common')
 include ':@mauron85/react-native-background-geolocation'

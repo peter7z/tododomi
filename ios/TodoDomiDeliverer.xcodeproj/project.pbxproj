@@ -382,6 +382,13 @@
 			remoteGlobalIDString = 69FCD6DC22CE5CEB00BE8A46;
 			remoteInfo = OneSignalNotificationServiceExtension;
 		};
+		69D7F93522F4A2AF00F51C2A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 69D7F90622F4A2AF00F51C2A /* RNCAsyncStorage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNCAsyncStorage;
+		};
 		78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
@@ -461,6 +468,7 @@
 		69FCD6E222CE5CEB00BE8A46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69FCD6EA22CE5D5100BE8A46 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		69FCD6EC22CE5D5C00BE8A46 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		69D7F90622F4A2AF00F51C2A /* RNCAsyncStorage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNCAsyncStorage.xcodeproj; path = "../node_modules/@react-native-community/async-storage/ios/RNCAsyncStorage.xcodeproj"; sourceTree = "<group>"; };
 		758ABA5BEAB9E80616055BEA /* Pods-TodoDomiDelivererTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoDomiDelivererTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodoDomiDelivererTests/Pods-TodoDomiDelivererTests.debug.xcconfig"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
@@ -762,6 +770,14 @@
 			isa = PBXGroup;
 			children = (
 				69FCD6B722CE407A00BE8A46 /* libRCTOneSignal.a */,
+				);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		69D7F90722F4A2AF00F51C2A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				69D7F93622F4A2AF00F51C2A /* libRNCAsyncStorage.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -789,6 +805,7 @@
 			isa = PBXGroup;
 			children = (
 				69FCD6A522CE407800BE8A46 /* RCTOneSignal.xcodeproj */,
+				69D7F90622F4A2AF00F51C2A /* RNCAsyncStorage.xcodeproj */,
 				2D95D20A219C6DC200DB93C2 /* RNSVG.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -1096,6 +1113,10 @@
 				{
 					ProductGroup = 55D3596B2092278300786105 /* Products */;
 					ProjectRef = F4725EB34C214385A73D13D2 /* ReactNativeNavigation.xcodeproj */;
+				},
+				{
+					ProductGroup = 69D7F90722F4A2AF00F51C2A /* Products */;
+					ProjectRef = 69D7F90622F4A2AF00F51C2A /* RNCAsyncStorage.xcodeproj */;
 				},
 				{
 					ProductGroup = 2D95D202219C6CC400DB93C2 /* Products */;
@@ -1423,6 +1444,13 @@
 			remoteRef = 69FCD6B622CE407A00BE8A46 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		69D7F93622F4A2AF00F51C2A /* libRNCAsyncStorage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNCAsyncStorage.a;
+			remoteRef = 69D7F93522F4A2AF00F51C2A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		78C398B91ACF4ADC00677621 /* libRCTLinking.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1521,7 +1549,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" ad3a36329c9a524b3742c0fe5ad2534ea6364e75 67df091296b2f4140dd4ecb05989bff36c9a00b36c65ae72dff9b88307c1855d\n";
+			shellScript = "
+";
 		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;

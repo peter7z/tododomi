@@ -6,12 +6,11 @@ target 'TodoDomiDeliverer' do
   # use_frameworks!
 
   # Pods for TodoDomiDeliverer
-  pod 'Fabric'
-  pod 'Crashlytics'
-
   target 'TodoDomiDeliverer-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
+
   end
 
   target 'TodoDomiDelivererTests' do

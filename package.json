@@ -9,6 +9,7 @@
 	},
 	"dependencies": {
 		"@mauron85/react-native-background-geolocation": "^0.5.3",
+		"@react-native-community/async-storage": "^1.6.1",
 		"actioncable": "^5.2.3",
 		"humps": "^2.0.1",
 		"immutable": "^3.8.1",
