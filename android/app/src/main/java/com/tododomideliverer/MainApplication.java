@@ -8,6 +8,7 @@ import com.horcrux.svg.SvgPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.marianhello.bgloc.react.BackgroundGeolocationPackage;
 import com.geektime.rnonesignalandroid.ReactNativeOneSignalPackage;
+import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -26,7 +27,8 @@ public class MainApplication extends NavigationApplication {
             new SvgPackage(),
             new SplashScreenReactPackage(),
             new BackgroundGeolocationPackage(),
-            new ReactNativeOneSignalPackage()
+            new ReactNativeOneSignalPackage(),
+            new AsyncStoragePackage()
         );
     }
 
