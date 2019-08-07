@@ -9,6 +9,7 @@ import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.marianhello.bgloc.react.BackgroundGeolocationPackage;
 import com.geektime.rnonesignalandroid.ReactNativeOneSignalPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
+import com.AlexanderZaytsev.RNI18n.RNI18nPackage; 
 
 import java.util.Arrays;
 import java.util.List;
@@ -28,6 +29,7 @@ public class MainApplication extends NavigationApplication {
             new SplashScreenReactPackage(),
             new BackgroundGeolocationPackage(),
             new ReactNativeOneSignalPackage(),
+            new RNI18nPackage(),
             new AsyncStoragePackage()
         );
     }
