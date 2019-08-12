@@ -15,12 +15,27 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     marginTop: onIPhoneX() ? iOSstatusBarHeightiPhoneX : iOSstatusBarHeight,
     borderBottomWidth: 1,
     borderBottomColor: lightGreyColor,
     paddingHorizontal: appSideSpace,
     paddingVertical: 16,
     width: '100%'
+  },
+
+  third: {
+    width: '33%',
+  },
+
+  rightContainer: {
+    width: '33%',
+    alignItems: 'flex-end',
+  },
+
+  leftContainer: {
+    width: '33%',
+    alignItems: 'flex-start',
   },
 
   middleContainer: {

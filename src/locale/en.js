@@ -44,6 +44,8 @@ export default {
     title: 'Orders',
     completed: 'COMPLETED',
     next: 'UPCOMING',
+    resting: 'Resting',
+    available: 'Available',
   },
 
   ORDERS: {

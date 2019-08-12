@@ -4,11 +4,14 @@ import { ScrollView, View, RefreshControl, Text, TouchableOpacity, LayoutAnimati
 import { connect } from 'react-redux';
 
 import { getOrders, getCompletedOrders, setOrders, setCompletedOrders } from 'actions/orderActions';
+import translate from 'utils/i18n';
+
 import ProfileAvatar from 'components/Common/Avatar';
 import Header from 'components/Common/Header';
 import OrdersEmptyState from 'components/Orders/OrdersEmptyState';
 import OrdersGroups from 'components/Orders/OrdersGroups';
-import translate from 'utils/i18n';
+import ToggleReception from 'components/User/ToggleReception';
+
 import { ORDER_FINISHED_STATUS, ORDER_INACTIVE_STATUS, TODAY_ID } from 'constants/appConstants';
 import { whiteColor, secondaryButtonTextColor, secondaryColor } from 'constants/styleConstants';
 import { PROFILE_SCREEN, ORDERS_GROUP_SCREEN } from 'constants/screenConstants';
@@ -109,6 +112,7 @@ class DashboardScreen extends React.Component {
               onPress={this.showProfile}
             />
           }
+          rightContainer={<ToggleReception />}
         />
         <View style={styles.tabs}>
           <TouchableOpacity

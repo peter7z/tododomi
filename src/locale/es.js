@@ -46,6 +46,8 @@ export default {
     tomorrow: 'Mañana',
     completed: 'COMPLETADAS',
     next: 'PRÓXIMAS',
+    resting: 'Descanso',
+    available: 'Disponible',
   },
 
   ORDERS: {

@@ -16,9 +16,9 @@ const Header = ({
   style
 }) => (
   <View style={[styles.container, style]}>
-    <View>{leftContainer}</View>
+    <View style={styles.leftContainer}>{leftContainer}</View>
 
-    <View style={styles.middleContainer}>
+    <View style={[styles.middleContainer, styles.third]}>
       <View style={styles.titleContainer}>
         <Image source={titleIcon} />
         <Text style={[styles.titleStyle, { color, fontSize: titleFontSize }]}>{title}</Text>
@@ -26,7 +26,7 @@ const Header = ({
       {subtitle && <Text style={styles.subtitleStyle}>{subtitle}</Text>}
     </View>
 
-    <View>{rightContainer}</View>
+    <View style={styles.rightContainer}>{rightContainer}</View>
   </View>
 );
 

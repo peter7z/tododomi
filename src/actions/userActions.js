@@ -37,6 +37,12 @@ export const logout = () =>
     }
   };
 
+export const toggleReception = () =>
+  async (dispatch) => {
+      const { active, ...shopper } = await sessionService.loadUser();
+      return userApi.update({ ...shopper, active: !active });
+  }
+
 export const changePassword = passwordData =>
   async () => {
     try {

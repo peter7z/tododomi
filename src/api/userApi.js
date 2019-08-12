@@ -12,6 +12,10 @@ class Session {
   static changePassword(passwordData) {
     return api.put('/deliverers/password', passwordData);
   }
+
+  static update({ id, ...shopper }) {
+    return api.put(`/deliverers/${id}`, shopper);
+  }
 }
 
 export default Session;
