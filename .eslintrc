@@ -6,7 +6,8 @@
     "airbnb"
   ],
   "plugins": [
-    "react"
+    "react",
+    "babel"
   ],
   "parser": "babel-eslint",
   "parserOptions": {
