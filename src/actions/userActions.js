@@ -38,9 +38,10 @@ export const logout = () =>
   };
 
 export const toggleReception = () =>
-  async (dispatch) => {
-      const { active, ...shopper } = await sessionService.loadUser();
-      return userApi.update({ ...shopper, active: !active });
+  async () => {
+      const { active, ...deliverer } = await sessionService.loadUser();
+      const { deliverer: user } = await userApi.update({ ...deliverer, active: !active });
+      sessionService.saveUser(user);
   }
 
 export const changePassword = passwordData =>

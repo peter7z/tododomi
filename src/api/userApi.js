@@ -13,8 +13,8 @@ class Session {
     return api.put('/deliverers/password', passwordData);
   }
 
-  static update({ id, ...shopper }) {
-    return api.put(`/deliverers/${id}`, shopper);
+  static update({ id, ...deliverer }) {
+    return api.put(`/deliverers/${id}`, deliverer);
   }
 }
 

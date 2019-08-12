@@ -1,6 +1,9 @@
 import React, { useRef, useCallback } from 'react'
-import { View, Text, TouchableOpacity, Animated, LayoutAnimation } from 'react-native'
+import { connect } from 'react-redux';
+import { Text, TouchableOpacity, Animated, LayoutAnimation } from 'react-native'
 import { debounce } from 'lodash';
+
+import { toggleReception } from 'actions/userActions';
 
 import useToggle from 'hooks/useToggle';
 import translate from 'utils/i18n';
@@ -12,11 +15,12 @@ import styles, { animatedStyles } from './styles';
 
 const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
 
-const toggleReception = ({ available }) => {
+const ToggleReception = ({ available, toggleReception }) => {
   const [state, toggleState] = useToggle(available);
-  const { current: value } = useRef(new Animated.Value(available ? 0 : 1))
+  const [disabled, toggleDisabled] = useToggle(false);
+  const { current: value } = useRef(new Animated.Value(available ? 1 : 0))
 
-  const toggle = useCallback(debounce(() => {
+  const animation = useCallback(debounce(() => {
       LayoutAnimation.easeInEaseOut();
       toggleState();
       Animated.timing(value, {
@@ -25,9 +29,21 @@ const toggleReception = ({ available }) => {
       }).start();
     },
     300,
-    { leading: true, trailing: false }
-    ), []
-  )
+    { leading: true, trailing: false },
+  ))
+
+  const toggle = async () => {
+    if (!disabled) {
+      toggleDisabled();
+      try {
+        animation();
+        await toggleReception();
+      } catch (error) {
+        animation();
+      }
+      setTimeout(toggleDisabled, 300);
+    }
+  };
 
   return (
     <AnimatedTouchable activeOpacity={1} onPress={toggle} style={[styles.container, animatedStyles.backgroundColor(value)]}>
@@ -35,15 +51,21 @@ const toggleReception = ({ available }) => {
       <Animated.View style={[styles.resting, animatedStyles.x(value)]}><Text style={styles.red}>{translate('DASHBOARD.resting')}</Text></Animated.View>
       <Animated.View style={[styles.available, animatedStyles.x(value, true)]}><Text style={styles.green}>{translate('DASHBOARD.available')}</Text></Animated.View>
 
-      <Animated.View style={[styles.lock, state ? styles.left : styles.right, animatedStyles.color(value)]}>
+      <Animated.View style={[styles.lock, state ? styles.right : styles.left, animatedStyles.color(value)]}>
         {
           state ? 
-            <OpenLock /> :
             <ClosedLock />
+            :
+            <OpenLock />
         }
       </Animated.View>
     </AnimatedTouchable>
   )
 }
 
-export default toggleReception
+const mapState = state => ({
+  available: state.getIn(['session', 'user', 'active']),
+});
+
+
+export default connect(mapState, { toggleReception })(ToggleReception);
