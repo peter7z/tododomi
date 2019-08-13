@@ -16,8 +16,8 @@ export default StyleSheet.create({
     top: 0,
     right: 13,
     bottom: 0,
-    width: "100%",
-    height: "100%",
+    width: '100%',
+    height: '100%',
     alignItems: 'flex-end',
     justifyContent: 'center',
   },
@@ -27,8 +27,8 @@ export default StyleSheet.create({
     top: 0,
     left: 13,
     bottom: 0,
-    width: "100%",
-    height: "100%",
+    width: '100%',
+    height: '100%',
     alignItems: 'flex-start',
     justifyContent: 'center',
   },
@@ -45,7 +45,7 @@ export default StyleSheet.create({
   left: {
     alignSelf: 'flex-start',
   },
-  
+
   right: {
     alignSelf: 'flex-end',
   },
@@ -75,23 +75,21 @@ export const animatedStyles = {
     })
   }),
 
-  color: (value) => ({
+  color: value => ({
     backgroundColor: value.interpolate({
       inputRange: [0, 1],
       outputRange: [redColor, greenColor]
     }),
   }),
 
-  x: (value, flip) => {
-    return {
-      transform: [
-        {
-          translateX: value.interpolate({
-            inputRange: [0, 1],
-            outputRange: [flip ? -78 : 0, flip ? 0 : 78]
-          })
-        },
-      ]
-    }
-  }
-}
+  x: (value, flip) => ({
+    transform: [
+      {
+        translateX: value.interpolate({
+          inputRange: [0, 1],
+          outputRange: [flip ? -78 : 0, flip ? 0 : 78]
+        })
+      },
+    ]
+  })
+};

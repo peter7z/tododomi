@@ -25,7 +25,23 @@
   },
   "settings": {
     "import/resolver": {
-      "babel-module": {}
+      "babel-module": {
+        "alias": {
+          "actions": "./src/actions",
+          "api": "./src/api",
+          "assets": "./src/assets",
+          "components": "./src/components",
+          "constants": "./src/constants",
+          "containers": "./src/containers",
+          "hooks": "./src/hooks",
+          "locale": "./src/locale",
+          "reducers": "./src/reducers",
+          "screens": "./src/screens",
+          "selectors": "./src/selectors",
+          "store": "./src/store",
+          "utils": "./src/utils",
+        },
+      }
     }
   },
   "rules": {

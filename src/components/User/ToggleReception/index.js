@@ -1,7 +1,8 @@
-import React, { useRef, useCallback } from 'react'
+import React, { useRef, useCallback } from 'react';
 import { connect } from 'react-redux';
-import { Text, TouchableOpacity, Animated, LayoutAnimation } from 'react-native'
+import { Text, TouchableOpacity, Animated, LayoutAnimation } from 'react-native';
 import { debounce } from 'lodash';
+import { func, bool } from 'prop-types';
 
 import { toggleReception } from 'actions/userActions';
 
@@ -18,19 +19,19 @@ const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
 const ToggleReception = ({ available, toggleReception }) => {
   const [state, toggleState] = useToggle(available);
   const [disabled, toggleDisabled] = useToggle(false);
-  const { current: value } = useRef(new Animated.Value(available ? 1 : 0))
+  const { current: value } = useRef(new Animated.Value(available ? 1 : 0));
 
   const animation = useCallback(debounce(() => {
-      LayoutAnimation.easeInEaseOut();
-      toggleState();
-      Animated.timing(value, {
-          toValue: (value._value + 1) % 2,
-          duration: 300,
-      }).start();
-    },
-    300,
-    { leading: true, trailing: false },
-  ))
+    LayoutAnimation.easeInEaseOut();
+    toggleState();
+    Animated.timing(value, {
+      toValue: (value._value + 1) % 2,
+      duration: 300,
+    }).start();
+  },
+  300,
+  { leading: true, trailing: false },
+  ));
 
   const toggle = async () => {
     if (!disabled) {
@@ -53,19 +54,23 @@ const ToggleReception = ({ available, toggleReception }) => {
 
       <Animated.View style={[styles.lock, state ? styles.right : styles.left, animatedStyles.color(value)]}>
         {
-          state ? 
+          state ?
             <ClosedLock />
             :
             <OpenLock />
         }
       </Animated.View>
     </AnimatedTouchable>
-  )
-}
+  );
+};
+
+ToggleReception.propTypes = {
+  available: bool,
+  toggleReception: func.isRequired,
+};
 
 const mapState = state => ({
   available: state.getIn(['session', 'user', 'active']),
 });
-
 
 export default connect(mapState, { toggleReception })(ToggleReception);

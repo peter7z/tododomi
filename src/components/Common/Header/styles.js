@@ -25,16 +25,16 @@ const styles = StyleSheet.create({
   },
 
   third: {
-    flex: .33,
+    flex: 0.33,
   },
 
   rightContainer: {
-    flex: .33,
+    flex: 0.33,
     alignItems: 'flex-end',
   },
 
   leftContainer: {
-    flex: .33,
+    flex: 0.33,
     alignItems: 'flex-start',
   },
 

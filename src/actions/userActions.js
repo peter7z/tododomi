@@ -39,10 +39,10 @@ export const logout = () =>
 
 export const toggleReception = () =>
   async () => {
-      const { active, ...deliverer } = await sessionService.loadUser();
-      const { deliverer: user } = await userApi.update({ ...deliverer, active: !active });
-      sessionService.saveUser(user);
-  }
+    const { active, ...deliverer } = await sessionService.loadUser();
+    const { deliverer: user } = await userApi.update({ ...deliverer, active: !active });
+    sessionService.saveUser(user);
+  };
 
 export const changePassword = passwordData =>
   async () => {
