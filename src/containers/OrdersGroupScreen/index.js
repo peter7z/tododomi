@@ -141,7 +141,7 @@ class OrdersGroupScreen extends React.Component {
                       onChangeOrderStatus={this.onToggleChangeStatus}
                       onEnterOrder={() => this.onEnterOrder(group, order)}
                       loading={changingId === order.id && statusLoading}
-                      disabled={disabled}
+                      disabled={disabled || !readyToDeliver}
                       last={(index == orders.length - 1)}
                     />
                   )}

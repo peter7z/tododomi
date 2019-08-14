@@ -84,7 +84,7 @@ const OrdersRow = ({
         {loading
           ? <ActivityIndicator size="small" />
           : (
-            <TouchableIcon onPress={() => onChangeOrderStatus(id, !delivered)}>
+            <TouchableIcon onPress={() => delivered === null && onChangeOrderStatus(id, !delivered)}>
               {delivered === null && <CircleIcon width={checkSize} height={checkSize} />}
               {delivered !== null && (
                 delivered
