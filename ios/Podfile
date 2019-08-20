@@ -22,8 +22,6 @@ target 'TodoDomiDeliverer' do
   # Pods for TodoDomiDeliverer
   target 'TodoDomiDeliverer-tvOSTests' do
     inherit! :search_paths
-    # Pods for testing
-    pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
 
   end
 

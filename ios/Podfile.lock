@@ -10,14 +10,11 @@ PODS:
     - React/Core (= 0.59.10)
   - React/Core (0.59.10):
     - yoga (= 0.59.10.React)
-  - RNCAsyncStorage (1.6.1):
-    - React
   - yoga (0.59.10.React)
 
 DEPENDENCIES:
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - React (from `../node_modules/react-native`)
-  - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - yoga (from `../node_modules/react-native/ReactCommon/yoga/Yoga.podspec`)
 
 SPEC REPOS:
@@ -31,8 +28,6 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/Folly.podspec"
   React:
     :path: "../node_modules/react-native"
-  RNCAsyncStorage:
-    :path: "../node_modules/@react-native-community/async-storage"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga/Yoga.podspec"
 
@@ -42,9 +37,8 @@ SPEC CHECKSUMS:
   Folly: de497beb10f102453a1afa9edbf8cf8a251890de
   glog: 1de0bb937dccdc981596d3b5825ebfb765017ded
   React: 36d0768f9e93be2473b37e7fa64f92c1d5341eef
-  RNCAsyncStorage: 621bad7a889b5bf1583a52547f2dcd3a4d1ff15e
   yoga: 684513b14b03201579ba3cee20218c9d1298b0cc
 
-PODFILE CHECKSUM: 3e23219ab5107ba9a2b4aabffe74cfe574fbfc01
+PODFILE CHECKSUM: b5585065fd2b57668764bccf12966b5f9db42ef4
 
 COCOAPODS: 1.7.5

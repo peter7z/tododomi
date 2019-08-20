@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
+import { View, Text, ActivityIndicator, UIManager } from 'react-native';
 import { object, bool, func } from 'prop-types';
 
 import translate from 'utils/i18n';
@@ -16,6 +16,8 @@ import styles, {
   addressLines,
   addressMode
 } from './styles';
+
+UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
 
 const OrdersRow = ({
   order: {
