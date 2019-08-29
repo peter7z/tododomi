@@ -1,8 +1,8 @@
 import React from 'react';
-import { TouchableHighlight, Text, ViewPropTypes } from 'react-native';
+import { TouchableHighlight, Text, ViewPropTypes, ActivityIndicator } from 'react-native';
 import { string, func, bool, number } from 'prop-types';
 
-import { lightGreyColor, primaryActiveColor } from 'constants/styleConstants';
+import { lightGreyColor, primaryActiveColor, whiteColor } from 'constants/styleConstants';
 import stylesProps from './styles';
 
 const Button = ({
@@ -15,7 +15,8 @@ const Button = ({
   marginHorizontal,
   containerStyle,
   underlayColor,
-  disabled = false
+  disabled = false,
+  loading = false,
 }) => {
   const styles = stylesProps(width, marginBottom, marginTop, marginHorizontal);
   const {
@@ -32,9 +33,13 @@ const Button = ({
       underlayColor={underlayColor || (transparent ? lightGreyColor : primaryActiveColor)}
       style={[buttonContainer, transparent && transparentStyle, containerStyle]}
     >
-      <Text style={[buttonText, transparent && transparentText]}>
-        {title}
-      </Text>
+      {loading ?
+        <ActivityIndicator size="small" color={whiteColor} />
+        :
+        <Text style={[buttonText, transparent && transparentText]}>
+          {title}
+        </Text>
+      }
     </TouchableHighlight>
   );
 };
@@ -50,6 +55,7 @@ Button.propTypes = {
   marginTop: number,
   marginHorizontal: number,
   underlayColor: string,
+  loading: bool,
 };
 
 export default Button;

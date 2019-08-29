@@ -27,7 +27,7 @@
 		"react-native-svg": "^6.5.2",
 		"react-redux": "^5.0.5",
 		"redux": "^3.7.1",
-		"redux-form": "^6.8.0",
+		"redux-form": "^8.2.3",
 		"redux-immutable": "^4.0.0",
 		"redux-react-native-session": "^1.0.7",
 		"redux-thunk": "^2.2.0",

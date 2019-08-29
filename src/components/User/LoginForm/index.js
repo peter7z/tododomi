@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { func, string, bool } from 'prop-types';
 import { Field, reduxForm } from 'redux-form/immutable';
 import { View, Text } from 'react-native';
 
@@ -9,7 +9,7 @@ import Input from 'components/Common/Input';
 import Button from 'components/Common/Button';
 import { styles, buttonMargin } from './styles';
 
-const LoginForm = ({ handleSubmit, error }) => (
+const LoginForm = ({ handleSubmit, error, submitting }) => (
   <View style={styles.container} onSubmit={handleSubmit}>
     {error && <Text style={styles.error}>{error}</Text>}
     <Field
@@ -27,15 +27,15 @@ const LoginForm = ({ handleSubmit, error }) => (
       title={translate('SIGN_IN.button')}
       onPress={handleSubmit}
       marginTop={buttonMargin}
+      loading={submitting}
     />
   </View>
 );
 
-const { func, string } = PropTypes;
-
 LoginForm.propTypes = {
   handleSubmit: func.isRequired,
-  error: string
+  error: string,
+  submitting: bool.isRequired,
 };
 
 export default reduxForm({
