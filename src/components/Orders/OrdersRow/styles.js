@@ -41,6 +41,11 @@ const styles = StyleSheet.create({
     marginLeft: 15,
   },
 
+  bottomRow: {
+    marginTop: 5,
+    flexDirection: 'row',
+  },
+
   name: {
     color: secondaryColor,
     fontSize: 16,

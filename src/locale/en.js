@@ -55,7 +55,9 @@ export default {
     tomorrow: 'Tomorrow',
     emptyOrdersTitle: 'You don\'t have orders',
     emptyOrdersDescription: 'Come again and refresh in 5 minutes',
-    emptyOrdersThanks: 'Thank you!'
+    emptyOrdersThanks: 'Thank you!',
+    total: 'Total: $',
+    paid: 'Order paid',
   },
 
   ORDERS_GROUP: {

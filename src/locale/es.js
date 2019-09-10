@@ -58,6 +58,8 @@ export default {
     emptyOrdersTitle: 'No tienes órdenes',
     emptyOrdersDescription: 'Vuelve a refrescar en 5 minutos',
     emptyOrdersThanks: 'Gracias!',
+    total: 'Total: $',
+    paid: 'Orden paga',
   },
 
   ORDERS_GROUP: {

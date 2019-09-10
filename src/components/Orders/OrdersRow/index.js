@@ -6,6 +6,7 @@ import translate from 'utils/i18n';
 import Avatar from 'components/Common/Avatar';
 import LinkButton from 'components/Common/LinkButton';
 import TouchableIcon from 'components/Common/TouchableIcon';
+import PriceChip from 'components/Orders/PriceChip';
 import { CheckIcon, CircleCrossIcon, LocationIcon, CircleIcon } from 'components/Icons';
 import { openMapAndDriveTo } from 'utils/helpers';
 import { primaryActiveColor, redColor } from 'constants/styleConstants';
@@ -25,6 +26,7 @@ const OrdersRow = ({
     address: { name: userAddress, latitude, longitude },
     consumer: { fullName, avatar },
     delivered,
+    totalPrice,
   },
   onChangeOrderStatus,
   onEnterOrder,
@@ -74,12 +76,15 @@ const OrdersRow = ({
           icon={<LocationIcon />}
         />
       </View>
-      <LinkButton
-        textStyle={styles.linkText}
-        containerStyle={styles.linkTextContainer}
-        text={translate('ORDERS_GROUP.details')}
-        onPress={onEnterOrder}
-      />
+      <View style={styles.bottomRow}>
+        <LinkButton
+          textStyle={styles.linkText}
+          containerStyle={styles.linkTextContainer}
+          text={translate('ORDERS_GROUP.details')}
+          onPress={onEnterOrder}
+        />
+        <PriceChip price={totalPrice} />
+      </View>
     </View>
     {!disabled &&
       <View style={styles.checkContainer}>
