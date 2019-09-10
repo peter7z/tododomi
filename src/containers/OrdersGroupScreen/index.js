@@ -117,7 +117,7 @@ class OrdersGroupScreen extends React.Component {
     } = this.props;
     const { changingId, showConfirmDialog } = this.state;
     return (
-      <View>
+      <View style={styles.container}>
         <OrdersHeader onBack={this.onBack} group={group} />
         <ScrollView style={styles.scroll}>
           <Text style={styles.title}>{translate('ORDERS_GROUP.stops')}</Text>

@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native';
 
-import { secondaryColor } from 'constants/styleConstants';
+import { secondaryColor, whiteColor } from 'constants/styleConstants';
 
 const styles = StyleSheet.create({
-  bgImage: { flex: 1 },
+  bgImage: { flex: 1, backgroundColor: whiteColor },
 
   logo: {
     resizeMode: 'contain',

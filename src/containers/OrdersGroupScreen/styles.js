@@ -1,8 +1,11 @@
 import { StyleSheet } from 'react-native';
 
-import { secondaryColor } from 'constants/styleConstants';
+import { secondaryColor, whiteColor } from 'constants/styleConstants';
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: whiteColor,
+  },
   activity: { paddingTop: '40%' },
 
   scroll: {

@@ -100,7 +100,7 @@ class DashboardScreen extends React.Component {
     const { user: { avatar, fullName }, loading } = this.props;
     const { completedTab } = this.state;
     return (
-      <View>
+      <View style={styles.container}>
         <Header
           title={translate('DASHBOARD.title')}
           color={secondaryColor}

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bool, object, func, string } from 'prop-types';
 import translate from 'utils/i18n';
 import ProductList from 'components/Product/ProductList';
+import PriceChip from 'components/Orders/PriceChip';
 import { getOrder, setOrderStatus } from 'actions/orderActions';
 import OrdersDetailHeader from 'components/Orders/OrdersDetailHeader';
 import OrdersDetailFooter from 'components/Orders/OrdersDetailFooter';
@@ -57,7 +58,7 @@ class OrderDetailScreen extends Component {
       group,
       order,
       currentOrder: {
-        order: { id, shop, variants } = {},
+        order: { id, shop, variants, totalPrice } = {},
         consumer
       },
       loading,
@@ -66,13 +67,14 @@ class OrderDetailScreen extends Component {
     const height = disabled ? scrollHeight + footerHeight : scrollHeight;
 
     return (
-      <View>
+      <View style={styles.container}>
         <OrdersDetailHeader
           height={headerHeight}
           onBack={this.onBack}
           group={group}
           order={order}
         />
+        <PriceChip style={styles.priceChip} price={totalPrice} />
         <ScrollView style={[styles.scroll, { height }]}>
           {loading ?
             <ActivityIndicator style={styles.activity} size="small" />

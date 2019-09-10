@@ -12,6 +12,9 @@ export const footerHeight = onIPhoneX() ? 120 : 92;
 export const scrollHeight = height - scrollPadding - headerHeight - footerHeight;
 
 export const styles = StyleSheet.create({
+  container: {
+    background: whiteColor
+  },
   activity: { paddingTop: '50%' },
 
   scroll: {
