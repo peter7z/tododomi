@@ -27,7 +27,7 @@ const ProductListHeader = ({
           <View style={styles.infoSubContainer}>
             <Text style={styles.title}>{fullName}</Text>
           </View>
-          <Text style={styles.subtitle}>{name}</Text>
+          <Text numberOfLines={2} style={styles.subtitle}>{name}</Text>
         </View>
       </View>
       <View style={styles.phone}>

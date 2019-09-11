@@ -7,10 +7,10 @@ export const headerHeight = 60;
 export const footerHeight = onIPhoneX() ? 120 : 92;
 export const scrollHeight = height - scrollPadding - headerHeight - footerHeight;
 export const styles = StyleSheet.create({
-  container: { backgroundColor: whiteColor },
+  container: { backgroundColor: whiteColor, height, justifyContent: 'flex-end' },
 
   content: {
-    height: scrollHeight,
+    marginTop: 'auto',
     fontFamily: fontRegular,
     fontSize: 15,
     paddingTop: 27,

@@ -43,7 +43,7 @@ export const iPhoneXHeight = 812;
 export const { width } = Dimensions.get('window');
 const { height: wh } = Dimensions.get('window');
 export const height = Platform.OS === 'ios' ? wh : (wh - StatusBar.currentHeight);
-export const containerWidth = width * 0.89;
+export const containerWidth = width * 0.94;
 export const appSideSpace = (width - containerWidth) / 2;
 
 // Linear gradients

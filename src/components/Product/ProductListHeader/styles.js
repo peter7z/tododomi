@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     fontFamily: fontRegular,
     fontSize: 15,
     marginTop: 3,
+    maxWidth: '90%',
   },
 
   phone: {
