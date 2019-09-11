@@ -12,7 +12,7 @@ export const scrollheight = height - headerHeight;
 
 export const styles = StyleSheet.create({
   container: {
-    background: whiteColor,
+    backgroundColor: whiteColor,
   },
   activity: { paddingTop: '50%' },
 

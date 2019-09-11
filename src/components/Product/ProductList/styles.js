@@ -9,11 +9,16 @@ export const stylesProps = even =>
   });
 
 export const styles = StyleSheet.create({
+  headerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+  },
   name: {
     color: secondaryColor,
     fontFamily: fontRegular,
     fontSize: 21,
-    paddingVertical: 12,
-    paddingHorizontal: 16,
   }
 });

@@ -12,6 +12,16 @@ export default StyleSheet.create({
     backgroundColor: redColor,
     borderRadius: 18,
   },
+  greenBackground: {
+    paddingHorizontal: 11,
+    paddingVertical: 5,
+    marginLeft: 11,
+    backgroundColor: greenColor,
+    borderRadius: 18,
+  },
+  paddingVertical: {
+    paddingVertical: 5,
+  },
   text: {
     fontFamily: fontMedium,
     fontSize: 14,
