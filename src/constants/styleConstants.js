@@ -2,7 +2,7 @@ import { Dimensions, Platform, StatusBar } from 'react-native';
 
 // Colors
 export const primaryActiveColor = '#5b82d7';
-export const primaryColor = '#7699e5';
+export const primaryColor = '#6F92DE';
 export const secondaryColor = '#304154';
 export const lightSecondaryColor = '#516173';
 export const redColor = '#E57676';
