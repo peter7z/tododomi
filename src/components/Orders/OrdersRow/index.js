@@ -22,11 +22,11 @@ UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationE
 
 const OrdersRow = ({
   order: {
+    totalCostFinal,
     id,
     address: { name: userAddress, latitude, longitude },
     consumer: { fullName, avatar },
     delivered,
-    totalPrice,
   },
   onChangeOrderStatus,
   onEnterOrder,
@@ -83,7 +83,7 @@ const OrdersRow = ({
           text={translate('ORDERS_GROUP.details')}
           onPress={onEnterOrder}
         />
-        <PriceChip price={totalPrice} />
+        <PriceChip price={totalCostFinal} />
       </View>
     </View>
     {!disabled &&

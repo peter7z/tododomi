@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { string, bool } from 'prop-types';
+import { number, bool } from 'prop-types';
 import translate from 'utils/i18n';
 
 import styles from './styles';
@@ -17,7 +17,7 @@ const PriceChip = ({ price, orderDetailsScreen }) => (
 );
 
 PriceChip.propTypes = {
-  price: string,
+  price: number,
   orderDetailsScreen: bool,
 };
 

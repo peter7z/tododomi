@@ -57,6 +57,7 @@ class OrderDetailScreen extends Component {
       group,
       order,
       currentOrder: {
+        order: currentOrder,
         order: { id, shop, variants } = {},
         consumer
       },
@@ -82,7 +83,7 @@ class OrderDetailScreen extends Component {
                   grocery={shop}
                   products={variants}
                   consumer={consumer}
-                  order={order}
+                  order={currentOrder}
                 />
               }
             </View>

@@ -14,7 +14,7 @@ export const groceryImageSize = 56;
 export const locationIconSize = 40;
 
 const styles = StyleSheet.create({
-  infoContainer: { marginLeft: 16 },
+  infoContainer: { marginLeft: 16, maxWidth: '70%' },
   infoSubContainer: { flexDirection: 'row' },
   avatarContainer: { position: 'relative' },
   separator: { color: groceryGreyColor },

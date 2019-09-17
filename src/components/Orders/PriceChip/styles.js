@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { redColor, fontMedium, whiteColor, greenColor, greyContentColor } from 'constants/styleConstants';
+import { primaryColor, fontMedium, whiteColor, greenColor, greyContentColor } from 'constants/styleConstants';
 
 export default StyleSheet.create({
   container: {
@@ -9,7 +9,7 @@ export default StyleSheet.create({
   background: {
     paddingHorizontal: 11,
     marginLeft: 11,
-    backgroundColor: redColor,
+    backgroundColor: primaryColor,
     borderRadius: 18,
   },
   greenBackground: {

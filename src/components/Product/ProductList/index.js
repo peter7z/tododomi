@@ -13,7 +13,7 @@ const ProductList = ({ consumer, products, order }) => (
     <ProductListHeader consumer={consumer} order={order} />
     <View style={styles.headerContainer}>
       <Text style={styles.name}>{translate('ORDER_ITEMS_SCREEN.title')}</Text>
-      <PriceChip orderDetailsScreen price={order.totalPrice} />
+      <PriceChip orderDetailsScreen price={order.totalCostFinal} />
     </View>
     {products.map(({ id, smallImage, name, countOfVariants }, index) => {
       const { productRow, productImage } = stylesProps(index % 2 === 0);
