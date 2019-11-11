@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -44,7 +45,6 @@
 		457D16973D1C439C831C3B5D /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DBBB0DD0A5B442BB3264A50 /* Roboto-Medium.ttf */; };
 		47B3E9462C5E44D6B4E88E13 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA39C219A22498A92F89D16 /* libReactNativeNavigation.a */; };
 		56A96B07D9CC596923070D35 /* libPods-TodoDomiDeliverer-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF4F70B09757BCD641926E29 /* libPods-TodoDomiDeliverer-tvOSTests.a */; };
-		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		69FCD6E122CE5CEB00BE8A46 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FCD6E022CE5CEB00BE8A46 /* NotificationService.m */; };
 		69FCD6E522CE5CEB00BE8A46 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 69FCD6DD22CE5CEB00BE8A46 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		69FCD6EB22CE5D5100BE8A46 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69FCD6EA22CE5D5100BE8A46 /* UIKit.framework */; };
@@ -359,13 +359,6 @@
 			remoteGlobalIDString = 69FCD6DC22CE5CEB00BE8A46;
 			remoteInfo = OneSignalNotificationServiceExtension;
 		};
-		69D7F93522F4A2AF00F51C2A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 69D7F90622F4A2AF00F51C2A /* RNCAsyncStorage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNCAsyncStorage;
-		};
 		78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
@@ -386,6 +379,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 358F4ED71D1E81A9004DF814;
 			remoteInfo = RCTBlob;
+		};
+		D0355FE32331560B002B55AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3CED69A8282F405494BC9867 /* ReactNativeConfig.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3DF7F6AC203AA09B00D0EAB7;
+			remoteInfo = "ReactNativeConfig-tvOS";
 		};
 		D067D1E622FB65380001C5F3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -480,7 +480,6 @@
 		69FCD6E222CE5CEB00BE8A46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69FCD6EA22CE5D5100BE8A46 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		69FCD6EC22CE5D5C00BE8A46 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		69D7F90622F4A2AF00F51C2A /* RNCAsyncStorage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNCAsyncStorage.xcodeproj; path = "../node_modules/@react-native-community/async-storage/ios/RNCAsyncStorage.xcodeproj"; sourceTree = "<group>"; };
 		758ABA5BEAB9E80616055BEA /* Pods-TodoDomiDelivererTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoDomiDelivererTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodoDomiDelivererTests/Pods-TodoDomiDelivererTests.debug.xcconfig"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
@@ -780,6 +779,7 @@
 			isa = PBXGroup;
 			children = (
 				55D359992092278400786105 /* libReactNativeConfig.a */,
+				D0355FE42331560B002B55AF /* libReactNativeConfig-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -797,14 +797,6 @@
 			isa = PBXGroup;
 			children = (
 				69FCD6B722CE407A00BE8A46 /* libRCTOneSignal.a */,
-				);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		69D7F90722F4A2AF00F51C2A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				69D7F93622F4A2AF00F51C2A /* libRNCAsyncStorage.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1451,13 +1443,6 @@
 			remoteRef = 69FCD6B622CE407A00BE8A46 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		69D7F93622F4A2AF00F51C2A /* libRNCAsyncStorage.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNCAsyncStorage.a;
-			remoteRef = 69D7F93522F4A2AF00F51C2A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		78C398B91ACF4ADC00677621 /* libRCTLinking.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1477,6 +1462,13 @@
 			fileType = archive.ar;
 			path = libRCTBlob.a;
 			remoteRef = ADBDB9261DFEBF0700ED6528 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D0355FE42331560B002B55AF /* libReactNativeConfig-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libReactNativeConfig-tvOS.a";
+			remoteRef = D0355FE32331560B002B55AF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		D067D1E722FB65380001C5F3 /* libjsi.a */ = {
