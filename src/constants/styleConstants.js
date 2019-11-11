@@ -2,7 +2,7 @@ import { Dimensions, Platform, StatusBar } from 'react-native';
 
 // Colors
 export const primaryActiveColor = '#5b82d7';
-export const primaryColor = '#6F92DE';
+export const primaryColor = '#8AAFFF';
 export const secondaryColor = '#304154';
 export const lightSecondaryColor = '#516173';
 export const redColor = '#E57676';
@@ -25,7 +25,7 @@ export const greyListBorderColor = '#ecf0f3';
 export const greyContentColor = '#8d98a2';
 export const greyCartColor = '#808c97';
 export const greyDialogBorder = '#edeff0';
-export const secondaryButtonTextColor = '#6f92de';
+export const secondaryButtonTextColor = '#8AAFFF';
 export const primaryActiveColorWithOpacity = 'rgba(118, 153, 229, 0.1);';
 export const primaryActiveColorWithHalfOpacity = 'rgba(118, 153, 229, 0.5)';
 export const greyLogoColor = 'rgba(128, 140, 151, 0.13)';
