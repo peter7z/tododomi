@@ -21,7 +21,7 @@
 		"react-native-config": "^0.11.5",
 		"react-native-i18n": "^2.0.15",
 		"react-native-material-textfield": "n4kz/react-native-material-textfield#pull/128/head",
-		"react-native-onesignal": "^3.2.14",
+		"react-native-onesignal": "^3.4.1",
 		"react-native-navigation": "wix/react-native-navigation#57caacddfc5422c00f41b32e031a732ab503b7dc",
 		"react-native-splash-screen": "^3.1.1",
 		"react-native-svg": "^6.5.2",
